@@ -28,7 +28,7 @@ body {
   border: 3px solid #f57f17;
   text-align: center;
   transform: rotatey(0deg);
-  animation: hoverChange 4s ease-in-out infinite;
+  animation: aroundChange 4s ease-in-out infinite;
 
 }
 .middle {
@@ -41,7 +41,7 @@ body {
   border: 3px solid #66BB6A;
   text-align: center;
   transform: rotatey(0deg);
-  animation: hoverChange 2s linear infinite;
+  animation: aroundChange 2s linear infinite;
 }
 .samll {
   position: absolute;
@@ -53,12 +53,12 @@ body {
   border: 3px solid #797979;
   text-align: center;
   transform: rotatey(0deg);
-  animation: hoverChange 1s ease-out infinite;
+  animation: aroundChange 1s ease-out infinite;
 }
 /*边框不同颜色的问题，自己的想法是内部定义四个小正方形，通过设设置部分的border来实现border的一半一半的变化
 例子里用的是content来完成边框的不一样
 */
-@keyframes hoverChange {
+@keyframes aroundChange {
   0%, 100% {
     transform: rotatey(0deg);
   }

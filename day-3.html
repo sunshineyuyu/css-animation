@@ -1,0 +1,85 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画3</title>  
+<style type="text/css">
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+body {
+  overflow: hidden;
+}
+/*今天这个除了布局，对边框，完全没有什么想法的感觉，需要学习了*/
+/*
+inear-gradient(45deg, pink 0%,green 100%);
+
+0%,100%都表示颜色的起始位置，在这两个中间的是过度颜色，但是如（）pink的起始位置是20%，那么20%之前的颜色都是存的pink,之后从20-100%都是过度颜色
+如果linear-gradient(0deg, pink 20%,green 80%);那么过度颜色是从20-80，之前是pink,之后是green
+
+这个比较叼的是，用background-size 可以对background来完成布局，放大缩小，这个好屌哦
+用的是background position来完成这个滚动条的滚动，我想不到，平时基本不用background-position跟background-size
+*/
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  padding: 30px;
+  margin: 100px auto 0;
+  /*background: pink;*/
+  border-radius: 10px;
+  background: linear-gradient(
+        -45deg,
+        white 0%,
+        white 25%,
+        hotpink 25%,
+        hotpink 50%,
+        white 50%,
+        white 75%,
+        hotpink 75%,
+        hotpink 100%);
+  background-size: 10%;
+  animation: animate 2s linear infinite;
+}
+.content {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 2px deeppink,
+              0 0 5px rgba(0, 0, 0, 1),
+              inset 0 0 5px rgba(0, 0, 0, 1);
+}
+.content p{
+  margin:0;
+  padding: 10px;
+}
+
+@keyframes animate {
+    from {
+        background-position: 0;
+    }
+
+    to {
+        background-position: 10%;
+    }
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="content">
+      <p>what is Lorem Ipsum</p>
+      <p>Mauris volutpat risus quis nisi tempus hendrerit. Nullam nisi urna, suscipit quis risus sed, congue congue quam. Morbi sit amet suscipit ex. Vivamus vel nulla ac libero volutpat ultrices.</p>
+    </div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
