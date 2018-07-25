@@ -1,0 +1,98 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画5</title>  
+<style type="text/css">
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background: bule;
+  overflow: hidden;
+  background: #2196F3;
+}
+.box {
+  box-sizing: border-box;
+  width: 250px;
+  height: 100px;
+  margin: 200px auto;
+  background: linear-gradient(to bottom, #c0c0c0, #fff);
+  border-radius: 100px;
+  padding: 20px;
+}
+.btn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, grey, #c0c0c0);
+  border-radius: 100px;
+}
+.out {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 58px;
+  height: 58px;
+  padding: 6px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #fff, #e0e0e0);
+  transition: left 1s ease-in-out;
+  box-shadow: 2px 2px 3px #898989;
+}
+.content {
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  line-height: 57px;
+  text-align: center;
+  /*跟border取个相反*/
+  background: linear-gradient(to top, #fff,#e0e0e0 );
+}
+.content::after{
+  content: 'off';
+}
+
+.active {
+  background: linear-gradient(to bottom,#4CAF50, #4CAF50,#66BB6A,#4CAF50);
+}
+.active .out {
+  --owh: 250px;
+  --item: 70px;
+  /*40最外成的padding，6是定位向外面点*/
+  left: calc(var(--owh) - var(--item) - 40px + 6px);
+}
+.active .content::after {
+  content: 'on';
+  color: #4CAF50;
+}
+
+/*这边用了下calc variable,用来计算滑动时候所需要的移动距离，就是想用一下，不带px会有一点的变动，但是结果不是想要的
+这边box-shadow 还可以多看看，研究下*/
+
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="btn">
+      <div class="out">
+        <div class="content"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  console.log('ok');
+  $('.out').click(function(){
+    $('.btn').toggleClass('active');
+  })
+});
+</script>  
+</html>
