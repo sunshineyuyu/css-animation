@@ -1,0 +1,78 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画4</title>  
+<style type="text/css">
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background: bule;
+  overflow: hidden;
+  background: #2196F3;
+}
+.button-wrap {
+    width: 170px;
+    height: 60px;
+    margin: 80px auto 0;
+    border: 1px solid #797979;
+    text-align: center;
+    line-height: 60px;
+    border-radius:  100px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #fff;
+    font-weight: bold;
+    overflow: hidden;
+    
+    transform: perspective(200px) rotateY(-30deg);
+    background: #FBC02D;
+    background: linear-gradient(to right, #FBC02D,#FFA000);
+    text-shadow: 5px 3px 1px #898989;
+    transition: all 1s ease-in-out; 
+}
+/*这个人的这个content真是用的炉火纯青啊*/
+.button-wrap::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, white, transparent);
+    left: -100%;
+    transition: 0.5s;
+}
+
+.button-wrap:hover::before {
+  left: 100%;
+}
+
+.button-wrap:hover {
+  transform: perspective(200px) rotateY(30deg);
+  text-shadow: -5px 3px 1px #898989;
+}
+
+
+/*已经忘了perspective。以及怎么用的，只知道有这么个属性*/
+/*元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。*/
+/*prespective可以放在transfrom里，放在transfrom里影响的就是元素本身*/
+
+
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="button-wrap">
+      BUTTON
+    </div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>  
+</html>
