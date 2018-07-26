@@ -1,0 +1,236 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画6-钻石</title>  
+<style type="text/css">
+:root{
+  --primaryColor: lightgreen;
+  --buttonBgColor: #1e88e5;
+
+  --bule1:#4169e1;  /*深一*/
+  --bule2:#00bfff; /*浅1*/
+  --bule3:#1e90ff;  /*浅*/
+  --bule4:#4682b4; /*深*/
+
+  --color1: deepskyblue;
+  --color2: steelblue;
+  --color3: royalblue;
+  --color4: dodgerblue;
+
+  animation: changeColor 2s linear infinite;
+}
+@keyframes changeColor {
+  0% {
+    --bule1:#4169e1;  /*深一*/
+    --bule2:#00bfff; /*浅1*/
+    --bule3:#1e90ff;  /*浅*/
+    --bule4:#4682b4; /*深*/
+  }
+  25% {
+    --bule3:#4169e1;/*深一*/
+    --bule4:#00bfff;/*浅1*/
+    --bule2:#1e90ff;/*浅*/
+    --bule1:#4682b4; /*深*/
+  }
+  50% {
+    --bule2:#4169e1;/*深一*/
+    --bule1:#00bfff;/*浅1*/
+    --bule4:#1e90ff;/*浅*/
+    --bule3:#4682b4; /*深*/
+  }
+  75% {
+    --bule4:#4169e1;/*深一*/
+    --bule3:#00bfff;/*浅1*/
+    --bule1:#1e90ff;/*浅*/
+    --bule2:#4682b4; /*深*/
+  }
+}
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.box {
+  width: 240px;
+  margin: 100px auto 0;
+  position: relative;
+  text-align: center;
+}
+.item {
+  display: inline-block;
+  border: 40px solid rgba(0,0,0,0);
+  margin-top: -4px;
+}
+.left {
+  
+  border-right: 40px solid var(--buttonBgColor);  
+}
+.center {
+  border-color: var(--buttonBgColor);
+}
+.right {
+  
+  border-left: 40px solid var(--buttonBgColor);  
+}
+.bottom {
+  border-top: 40px solid var(--buttonBgColor);  
+}
+
+.box2 {
+  width: 160px;
+  margin: 0 auto;
+  text-align: center
+}
+
+.op {
+  display: inline-block;
+  margin-top: -4px;
+  letter-spacing: -4px;
+  font-size: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, var(--bule2) 50%, var(--bule1) 50%);
+}
+.left-side {
+  transform: rotateX(180deg);
+}
+.one {
+  background: linear-gradient(45deg,#fff 50%,var(--bule3) 50%);
+}
+.three {
+  background: linear-gradient(45deg,var(--bule4) 50%,var(--bule3) 50%);
+}
+.four {
+  background: linear-gradient(45deg,var(--bule2) 50%,#fff 50%);
+}
+.five {
+  background: linear-gradient(45deg,#fff 50%,var(--bule1) 50%);
+}
+.six {
+  background: linear-gradient(45deg, var(--bule4) 50%, var(--bule3) 50%);
+}
+.seven {
+  background: linear-gradient(45deg, var(--bule2) 50%, var(--bule1) 50%);
+}
+.eight{
+  background: linear-gradient(45deg,var(--bule4) 50%,#fff 50%);
+}
+.nine{
+  background: linear-gradient(45deg,#fff 50%,var(--bule1) 50%);
+}
+.ten {
+  background: linear-gradient(45deg,var(--bule4) 50%,#fff 50%);
+}
+
+/*
+新知识梳理
+：root来完成设置总变量，当然了，还是scss写着可能会更爽，哈哈哈哈哈
+display:inline-block遇到有间隙的问题，通过设置margin-top:-4px;还有不换行解决这个问题
+
+例子里用的grid布局，也算是简单学习了，也没有试着用flex写写能不能完成这个
+*/
+/*
+这个画出来钻石并不是很屌
+叼的是这个东西的颜色，显出来bulingbuling的感觉
+牛逼。。。不太惹得起
+
+突然发现，我还是太嫩了，第一眼是想用border来完成一个三角形
+然后我发现，这不对啊，这个如果做出来得好几排，好多三角形呢，这也太烦了
+后来想用 linear-gradient 来完成一个三角形，但是也得写很多个
+虽然用linear-gradient写出来了，但是，实在不好意思，搞不出来了，颜色搞不出来很和谐了
+然后就是变换颜色，这个颜色，我想的是animation的时候去修改颜色
+emmm,颜色确实变了，但是蜜汁尴尬，哈哈哈哈哈，也算完成了每日一练
+而且，这个linear-gradient属性，会在交汇处表现的比较不好，有锯齿装一样
+当然我这么土的方法，很不好
+写了别人的方法，发现，自己的这个不灵不灵，不丝滑，也许是因为直接变换的总的颜色吧
+不过别人没写第一个元素转色，就这样吧，结束
+*/
+
+/*
+例子
+这个布局还是很屌的，需要三个正方形跟一个三角形，所以需要些一个少边的border就好
+真是开阔思路了，好赞啊，emm
+顺便去修改下我自己的颜色好了
+*/
+.box3 {
+    height: 200px;
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.diamond {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transform: rotate(45deg);
+}
+
+.diamond span {
+    border-width: 50px;
+    border-style: solid;
+}
+.diamond span {
+    border-color: var(--color1) var(--color2) var(--color3) var(--color4);
+}
+.diamond span:first-child {
+    border-color: transparent var(--color2) var(--color3) transparent;
+}
+.diamond span:not(:first-child) {
+    animation: animate 2s linear infinite;
+}
+@keyframes animate {
+    0% {
+        border-color: var(--color1) var(--color2) var(--color3) var(--color4);
+    }
+    
+    25% {
+        border-color: var(--color4) var(--color1) var(--color2) var(--color3);
+    }
+    
+    50% {
+        border-color: var(--color3) var(--color4) var(--color1) var(--color2);
+    }
+    
+    75% {
+        border-color: var(--color2) var(--color3) var(--color4) var(--color1);
+    }
+    
+    100% {
+        border-color: var(--color1) var(--color2) var(--color3) var(--color4);
+    }
+}
+</style>
+</head>
+<body>
+  <!-- 我自己就是花了个钻石形状的东西 -->
+  <div class="box">
+    <div class="row">
+      <div class="item left one"></div><div class="item center"></div><div class="item right"></div><div class="item bottom"></div>
+    </div>
+  </div>
+  <!-- 画一个对角显示的不同眼的正方形 -->
+  <div class="box2">
+    <div class="op left-side one"></div><div class="op"></div><div class="op left-side three"></div><div class="op four"></div>
+
+    <div class="op five"></div><div class="op left-side six"></div><div class="op seven"></div><div class="op left-side eight"></div>
+
+    <div class="op nine"></div><div class="op left-side ten"></div>
+  </div>
+  <!-- 列子 -->
+  <div class="box3">
+    <div class="diamond">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
