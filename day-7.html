@@ -1,0 +1,52 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画7</title>  
+<style type="text/css">
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.box {
+  margin: 100px auto 0;
+  width: 500px;
+  height: 50px;
+  border: 1px solid #787878;
+  text-align: center
+}
+.child{
+  float: left;
+  width: 110px;
+  height: 50px;
+  background: #4FC3F7;
+}
+/*
+这个距离很尴尬，采用的方式是，调的，肉眼看的，很不科学，只能说这perspective属性并不能很清楚的拿到这个焦点
+先酬和，晚上看视频研究下
+*/
+.one {
+  background: linear-gradient(to right,#4FC3F7, #0288D1);
+  transform:perspective(200px) rotateY(-30deg) ;
+}
+.two{
+  background: linear-gradient(to left,#4FC3F7, #0288D1);
+  transform: perspective(200px) rotateY(30deg);
+
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="child one"></div>
+    <div class="child two"></div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
