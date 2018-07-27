@@ -1,0 +1,153 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画8-充电</title>  
+<style type="text/css">
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background: #00BCD4;
+}
+.box {
+  position: relative;
+  width: 240px;
+  margin: 100px auto 0;
+  position: relative;
+  text-align: center;
+}
+.wrap {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: 10px solid #303F9F;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.charge {
+  height: 100%;
+  width: 40px;
+  background: #fff;
+  animation: charging 4s linear infinite;
+}
+/*不是一个很完美的方式，是一个接近的方式解决这个问题，有点小尴尬啊*/
+@keyframes charging {
+  0% {
+    width: 40px;
+  }
+  24.9% {
+    width: 40px;
+  }
+  25% {
+    width: 80px;
+  }
+  49.9% {
+    width: 80px;
+  }
+  50% {
+    width: 120px;
+  }
+  74.9% {
+    width: 120px;
+  }
+  75%{
+    width:160px;
+  }
+  100%{
+    width:160px;
+  }
+}
+.outside {
+  position: absolute;
+  top: 30px;
+  left: 200px;
+  height: 30px;
+  display: inline-block;
+  border: 5px solid #303F9F;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.box2 {
+  width: 240px;
+  margin: 100px auto 0;
+  text-align: center;
+}
+.battery {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: 10px solid #303F9F;
+  border-radius: 10px;
+  box-sizing: border-box;
+
+  /*
+  这个，可以通过画图来设置background image,然后来设置background-size;
+  background-size:时候这单个背景大大小，这里用%是表示相对于整个父级元素的宽高;
+  bacground-position: 是以整个背景的大小的中心来定位的，这边的50%就是整个背景的中心点，在50%
+  好像是这样，一会再查查
+  */
+  background-image: linear-gradient(to right, whitesmoke, whitesmoke);
+  background-repeat: no-repeat;
+  background-size: 25% 80%;
+  background-position: 10px 50%;
+
+  /*animation: charge 5s linear infinite;*/
+  /*把动画的时间函数由线性变化改为步长变化*/
+  /*
+  stpes: animation-timing-function的一个函数，不需要每个关键帧之间插入补间动画,需要关键帧之间的跳跃
+  steps 函数指定了一个阶跃函数
+  第一个参数指定了时间函数中的间隔数量（必须是正整数）
+  第二个参数可选，接受 start 和 end 两个值，指定在每个间隔的起点或是终点发生阶跃变化，默认为 end。
+  step-start等同于steps(1,start)，动画分成1步，动画执行时为开始左侧端点的部分为开始；
+  step-end等同于steps(1,end)：动画分成一步，动画执行时以结尾端点为开始，默认值为end。
+  */
+  animation: charge 5s steps(8) infinite;
+}
+/*from to 之后一些简单的动画，一定要多用用撒*/
+@keyframes charge {
+    from {
+        background-size: 10% 80%;
+    }
+
+    to {
+        background-size: 100% 80%;
+    }
+}
+.battery::after {
+  content:'';
+  position: absolute;
+  top: 30px;
+  left: 200px;
+  height: 30px;
+  border: 5px solid #303F9F;
+  border-radius: 0 5px 5px 0;
+  /*border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;*/
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="wrap">
+      <div class="charge"></div>
+    </div>
+    <div class="outside"></div>
+  </div>
+
+  <!-- 例子真是把content用的也炉火纯青啊，再次感叹，希望下次，我也可以做到，上来就想到 -->
+  <div class="box2">
+    <div class="battery"></div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
