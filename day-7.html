@@ -12,38 +12,166 @@ html, body{
   height: 100%;
   width: 100%;
 }
+/*body{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}*/
 .box {
   margin: 100px auto 0;
   width: 500px;
   height: 50px;
-  border: 1px solid #787878;
+  /*border: 1px solid #787878;*/
   text-align: center
 }
 .child{
   float: left;
-  width: 110px;
+  width: 130px;
   height: 50px;
   background: #4FC3F7;
+  color: #Fff;
+  line-height: 50px;
+  font-size: 24px;
+  overflow: hidden;
+  position: relative;
 }
 /*
 这个距离很尴尬，采用的方式是，调的，肉眼看的，很不科学，只能说这perspective属性并不能很清楚的拿到这个焦点
-先酬和，晚上看视频研究下
+先酬和，晚上看视频研究下(视频还是妹看)
 */
 .one {
-  background: linear-gradient(to right,#4FC3F7, #0288D1);
-  transform:perspective(200px) rotateY(-30deg) ;
+  background: linear-gradient(to right,#03A9F4, #03A9F4);
+  transform:perspective(100px) rotateY(-30deg);
 }
 .two{
-  background: linear-gradient(to left,#4FC3F7, #0288D1);
-  transform: perspective(200px) rotateY(30deg);
+  margin-left: 37px;
+  background: linear-gradient(to left,#4FC3F7, #4FC3F7);
+  transform: perspective(100px) rotateY(30deg);
+}
+.one::after {
+  content: 'helloworld';
+  position: absolute;
+  left:130px;
+  width: 130px;
+  text-align: left;
+  animation: runtwo 6s linear infinite;
+  color: #01579B;
+}
+.two::after {
+  content: 'helloworld';
+  position: absolute;
+  left: 130px;
+  width: 130px;
+  text-align: left;
+  animation: runone 6s linear infinite;
+}
+/*
+这个时间，感觉计算的很蛋疼，得计算的好，俩才能子啊交汇点重合，
+虽然看样子是出来了，但是，在里边绕了半天才出来，智商比较低
+就是两个都用的时间50%；
+但是两个都出来的时间是50% 的一半
 
+例子里用的是animation-delay动画延迟，只能说知识比较窄，限制了思路
+*/
+@keyframes runone {
+  0% {
+    left: 130px;
+  }
+  25% {
+    left: 0px;
+  }
+  50%{
+    left: -130px;
+  }
+  100%{
+    left: -130px;
+  }
+}
+@keyframes runtwo {
+  0% {
+    left: 130px;
+  }
+  25%{
+    left: 130px;
+  }
+  75%{
+    left: -130px;
+  }
+  100%{
+    left: -130px;
+  }
+}
+
+/*例子*/
+.box2 {
+    display: flex;
+    margin-top: 200px;
+    margin-left: 200px;
+}
+
+.box2 .inner {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 32px;
+    font-family: sans-serif;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/*
+例子也经常的用子元素 first-child
+transform-origin 设置旋转元素的基点位置
+*/
+.box2 .inner:first-child {
+    background-color: indianred;
+    color: darkred;
+    transform-origin: left;
+    transform: perspective(300px) rotateY(-67.3deg);
+}
+.box2 .inner:last-child {
+    background-color: lightcoral;
+    color: antiquewhite;
+    transform-origin: right;
+    transform: perspective(300px) rotateY(67.3deg);
+}
+.box2 .inner span {
+    position: absolute;
+    animation: marquee 5s linear infinite;
+}
+/*看到别人这么用，有种，能看到别人看不到的感觉*/
+.box2 .inner:first-child span {
+    animation-delay: 2.5s;
+    left: -100%;
+}
+@keyframes marquee {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -100%;
+    }
 }
 </style>
 </head>
 <body>
   <div class="box">
-    <div class="child one"></div>
-    <div class="child two"></div>
+    <div class="child one">
+    </div>
+    <div class="child two">
+      <!-- <span>helloworld</span> -->
+    </div>
+  </div>
+
+  <div class="box2">
+    <div class="inner">
+        <span>Hello World</span>
+    </div>
+    <div class="inner">
+        <span>Hello World</span>
+    </div>
   </div>
 </body>  
 <script type="text/javascript">
