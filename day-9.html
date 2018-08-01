@@ -1,0 +1,229 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画9-瞄准</title>  
+<style type="text/css">
+html, body{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: silver;
+
+}
+.box {
+  margin: 100px auto;
+  /*background: #263238;*/
+  position: relative;
+  filter: blur(2px);
+  transition: all 2s;
+}
+/*
+filter这个属性很有意思，就是给自己自拍加各种效果一样，以后用到了对图片的处理的时候多用用，感觉还是很有意思的一个东西，能弄出来阿凡达
+*/
+.box span {
+  display: inline-block;
+  line-height: 40px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;  
+  width: 100px;
+  text-align: center;
+}
+.box:hover {
+  filter: blur(0.2px);
+}
+.box::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid red;
+  filter: opacity(0);
+}
+
+.box:hover::after,
+.box:hover .wrap{
+  animation: aim 2s linear infinite alternate;
+}
+
+.wrap {
+  position: absolute;
+  left: -100px;
+  top: calc(-100px - 30px);
+  filter: opacity(0);
+  /*top: -130px;*/
+}
+.target {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+.target div {
+  position: absolute;
+}
+.center {
+  top: 100px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid red;
+}
+.top {
+  height: 100px;
+  top: 0px;
+  left: 151px;
+  border: 1px solid red;
+}
+.left{
+  left: 0;
+  top: 150px;
+  width: 100px;
+  border: 1px solid red;
+}
+.right{
+  left: 202px;
+  top: 150px;
+  width: 100px;
+  border: 1px solid red;
+}
+.bottom {
+  height: 100px;
+  top: 202px;
+  left: 151px;
+  border: 1px solid red;
+}
+/*
+所以，这个其实我搞不出来，因为我其实利用的z-index来让瞄准在button上
+但是这个事件实在button的hover之后才出来，而且这个是先清晰，然后全部消失，
+如果我全部定位到box的上的话，还是逻辑行不通
+*/
+
+/*
+一般来说，我看到需求，我想的是用transition还是用animation好呢，
+结果这边两边都用，完美的解决了这个hover之后变清晰，然后变没的问题.
+所以说这边做的事件还是在box上，
+问题事，我用了center这class来完成圆，这导致我，不能hover到box上
+修正了下，除了布局，基本跟例子一样了，用after让其能实现hover
+*/
+.box2 {
+  /*
+  以font-size：30px为基准
+  3em就是30px*3
+  */
+  width: 9em;
+  height: 3em;
+  font-size: 30px;
+  text-align: center;
+  line-height: 3em;
+  letter-spacing: 0.2em;
+  font-family: sans-serif;
+
+  position: relative;
+  filter: blur(2px);
+  transition: 0.5s;
+}
+
+.box2:hover {
+    filter: blur(0.2px);
+}
+.box2::after {
+    content: '';
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    border: 1px solid red;
+    border-radius: 50%;
+    left: 3em;
+    filter: opacity(0);
+}
+
+
+.box2 span:not(:first-child) {
+    filter: opacity(0);
+    position: absolute;
+    background-color: red;
+}
+
+/*hover事件之后用animation*/
+.box2:hover::after,
+.box2:hover span:not(:first-child) {
+    animation: aim 1s linear infinite alternate;
+}
+
+.box2 span.top2,
+.box2 span.bottom2 {
+    width: 1px;
+    height: 3em;
+    left: 50%;
+}
+
+.box2 span.top2 {
+    top: -3em;
+}
+
+.box2 span.bottom2 {
+    bottom: -3em;
+}
+
+.box2 span.left2,
+.box2 span.right2 {
+    width: 3em;
+    height: 1px;
+    top: 50%;
+}
+
+.box2 span.left2 {
+    left: 0;
+}
+
+.box2 span.right2 {
+    right: 0;
+}
+
+@keyframes aim {
+    from {
+        filter: opacity(0.2);
+    }
+
+    to {
+        filter: opacity(0.8);
+    }
+}
+
+</style>
+</head>
+<body>
+  <div class="box">
+    <span>button</span>
+    <div class="wrap">
+      <div class="target">
+        <div class="top"></div>
+        <div class="left"></div>
+        <!-- <div class="center"></div> -->
+        <div class="right"></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="box2">
+    <span>BUTTON</span>
+    <span class="top2"></span>
+    <span class="bottom2"></span>
+    <span class="left2"></span>
+    <span class="right2"></span>
+  </div> -->
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
