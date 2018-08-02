@@ -1,0 +1,93 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画10-同心loading</title>  
+<style type="text/css">
+html, body{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: silver;
+}
+.box {
+  width: 300px;
+  margin: 100px auto 0;
+  position: relative;
+}
+.box div {
+  border-radius: 50%;
+}
+/*
+我这边的实现方式同过animation-timing-function 动画效果的不一样来实现这个功能
+animation-direction动画是否在一个周期完成之后逆向运动，alternate是逆向运动
+*/
+.big {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border: 6px solid #f57f17;
+  text-align: center;
+  border-color:#f44336 rgba(255,255,255,0) #1976D2 rgba(255,255,255,0); 
+  transform: rotatez(0deg);
+  animation: aroundChange 1.5s ease-out infinite alternate;
+
+}
+.middle {
+  box-sizing: border-box;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  border: 6px solid #66BB6A;
+  text-align: center;
+  border-color:#FF5722 rgba(255,255,255,0) #4FC3F7 rgba(255,255,255,0); 
+  transform: rotatez(0deg);
+  animation: aroundChange 1.5s ease-in infinite alternate;
+}
+.samll {
+  box-sizing: border-box;
+  position: absolute;
+  top: 55px;
+  left: 55px;
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  border: 6px solid #797979;
+  text-align: center;
+  transform: rotatez(0deg);
+  border-color:#FFEB3B rgba(255,255,255,0) #00897B rgba(255,255,255,0); 
+  animation: aroundChange 1.5s ease-in-out infinite alternate;
+}
+@keyframes aroundChange {
+  form {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+/*
+例子还是用的content来实现三个不同的圈，
+关于旋转，全部都是用的一个animation-timing-function来实现的，但是他对应的animation-duration(完成一个动画的时间)不一样
+*/
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="big"></div>
+    <div class="middle"></div>
+    <div class="samll"></div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
