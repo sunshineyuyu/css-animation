@@ -1,0 +1,92 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画11-脉冲</title>  
+<style type="text/css">
+html, body{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: silver;
+}
+.box {
+  width: 300px;
+  margin: 100px auto 0;
+  position: relative;
+}
+.circle {
+  margin: 100px;
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 6px solid #76FF03;
+
+  position: relative;
+}
+.circle::after {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 60px;
+  height: 60px;
+  background-color: #76FF03;
+  border-radius: 50%;
+}
+.bobo,.bo {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  box-sizing: border-box;
+  border: 3px solid #76FF03;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  animation: run 2s ease-out infinite;
+}
+.bo {
+  animation-delay: 1s;
+}
+@keyframes run {
+  from {
+    top: -6px;
+    left: -6px;
+    width: 100px;
+    height: 100px;
+    border-color: rgba(118,255,3,1);
+  }
+  to {
+    top: -56px;
+    left: -56px;
+    width: 200px;
+    height: 200px;
+    border-color: rgba(118,255,3,0.3);
+  }
+}
+
+/*
+例子
+例子只用了一元素，一个元素可以有多个before或者after
+另外，这边之用一个元素，最初是的元素没有用到border，这样之后牵扯的计算就特别的少了后边就比较好几算了
+*/
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="circle">
+      <div class="bobo"></div>
+      <div class="bo"></div>
+    </div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
