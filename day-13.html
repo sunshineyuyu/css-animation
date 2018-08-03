@@ -1,0 +1,128 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画13-coffee</title>  
+<style type="text/css">
+html, body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  /*height: 100%;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  background: pink;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+   align-items: center;
+}
+.cup {
+  height: 180px;
+  width: 180px;
+  background-color: #fff;
+
+  position: relative;
+  border-radius: 0 0 20px 20px;
+}
+.cup::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: 180px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #4E342E 0 ,#8e4b32 40% ,#4E342E 100%);
+  border: 12px solid #fff;
+  box-sizing: border-box;
+  z-index: 100;
+}
+.cup::after{
+  content: '';
+  position: absolute;
+  top: 40px;
+  right: -55px;
+  width: 80px;
+  height: 80px;
+  border: 10px solid #fff;
+  border-radius: 50%;
+}
+.bottom {
+  margin-top: 3px;
+  width: 250px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 0 0 50% 50%;
+}
+.fog {
+  position: relative;
+  width: 180px;
+  height: 100px;
+}
+.cup div{
+  position: absolute;
+  top: -50px;
+  background: rgba(255, 255, 255,0.1);;
+  width: 1px;
+  height: 0px;
+  z-index: 100;
+  box-shadow: 0 0 11px #fff;
+  animation: fly 2s linear infinite;
+}
+.one {
+  left: 10%;
+}
+.cup .two {
+  left: 35%;
+  animation-delay: 0.5s;
+}
+.cup .three {
+  left: 60%;
+  /*animation-delay: 0.5s;*/
+}
+.cup .four {
+  left: 85%;
+  animation-delay: 0.7s;
+}
+@keyframes fly {
+  from {
+    top: -50px;
+    box-shadow: 0 0 11px #fff;
+    height: 50px;
+  }
+  to {
+    top: -150px;
+    box-shadow: 0 0 1px #fff;
+    height: 10px;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="fog">
+    </div>
+    <div class="cup">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+      <div class="four"></div>
+      
+    </div>
+    <div class="bottom"></div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
