@@ -1,0 +1,126 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画17-同心矩形旋转</title>  
+<style type="text/css">
+html, body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  /*height: 100%;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  background: black;
+}
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+/*
+这里有个有意思的东西，就是如果用透明度的话
+即便是相同的透明度，但是border的颜色还是跟box的颜色不一样，
+个人觉得是，border的颜色是压在box上的所以，颜色要深一些
+*/
+.box div{
+  position: absolute;
+  background: rgba(0,230,118, 0.3);
+  box-sizing: border-box;
+  border: 10px solid #fff;
+  border-color: rgba(0,230,118, 0.3) #fff;
+  animation: goRound 5s ease-in-out infinite alternate;
+}
+.box div:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  animation-delay: calc(0.2s * (5 - 1));
+}
+.box div:nth-child(2){
+  width: 80%;
+  height: 80%;
+  top: calc((100% - 80%)/2);
+  left: calc((100% - 80%)/2);
+  /*animation-delay: 1.5s;*/
+  animation-delay: calc(0.2s * (5 - 2));
+
+}
+.box div:nth-child(3){
+  width: 60%;
+  height: 60%;
+  top: calc((100% - 60%)/2);
+  left: calc((100% - 60%)/2);
+  /*animation-delay: 1s;*/
+  animation-delay: calc(0.2s * (5 - 3));
+
+}
+.box div:nth-child(4){
+  width: 40%;
+  height: 40%;
+  top: calc((100% - 40%)/2);
+  left: calc((100% - 40%)/2);
+  /*animation-delay: .5s;*/
+  animation-delay: calc(0.2s * (5 - 4));
+}
+.box div:nth-child(5){
+  width: 20%;
+  height: 20%;
+  top: calc((100% - 20%)/2);
+  left: calc((100% - 20%)/2);
+  /*animation-delay: 2s;*/
+}
+
+/*同一个动画里边可以把不同步的分开来写，头一次见*/
+@keyframes goRound {
+  form{
+    transform: rotateZ(0deg);
+  }
+  to{
+    transform: rotate(720deg);
+  }
+  0% {
+        /* red */
+        background-color: rgba(100%, 0%, 0%, 0.3);
+    }
+
+    25% {
+        /* yellow */
+        background-color: rgba(100%, 100%, 0%, 0.3);
+    }
+
+    50% {
+        /* green */
+        background-color: rgba(0%, 100%, 0%, 0.3);
+    }
+
+    75% {
+        /* blue */
+        background-color: rgba(0%, 0%, 100%, 0.3);
+    }
+
+    100% {
+        /* purple */
+        background-color: rgba(100%, 0%, 100%, 0.3);
+    }
+}
+
+</style>
+</head>
+<body>
+  <div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
