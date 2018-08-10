@@ -59,7 +59,12 @@ html, body{
       transform: translateY(10em);
   }
 }
-
+/*
+这个：nth-of-type我只能说没用过，甚至没有见过，跟calc打开的我新世界一样，这个也是
+：nth-of-type选择器，可以选择对应的某个数值的倍数的元素，比如这边2n就是2的倍数，3n就是3的倍数
+当然也可以直接用奇偶来，odd,even
+：nth-child选择器，也可以用odd,even计算，也可以直接写第几个元素
+*/
 .box div:nth-of-type(2n) {
     animation-delay: 0.2s;
 }
