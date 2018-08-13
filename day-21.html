@@ -20,61 +20,80 @@ body {
   /*background: linear-gradient(to right, transparent, white, transparent);*/
 
 }
-/*
-断裂这个是完全没有接触过的，所以，先看了知识点
-发现还有clip这种东西，刷新了我的认知，以为对PS的了解，emmm，
-感觉css都要抢了PS的饭碗了,竟然除了filter还有这种可以对图片进行操作的东西，竟然可以抠图，
-还可以跟canvas一样活得各种图形，厉害，厉害，现在的前端惹不起啊
-*/
 .box {
-  width: 300px;
-  height: 100px;
-  margin: 100px auto;
-  /*display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;*/
   position: relative;
-}
-.start, .end {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 300px;
-  height: 100px;
-  font-size:  50px;
-  color: #fff;
-  line-height: 100px;
+  height: 400px;
   text-align: center;
-  transition: 0.5s;
-  font-family: "arial black";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.start {
-  /*background:#2E7D32;*/
-  clip-path: polygon(0 0, 60% 0, 40% 100%, 0 100%);
+.item {
+  position: relative;
+  width: 250px;
+  height: 42px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
-.end {
-  /*background: #E91E63;*/
-  clip-path: polygon( 60% 0, 100% 0, 100% 100%, 40% 100%);
+.ask, .answer {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 100%;
+  height: 42px;
+  line-height: 42px;
+  color: #fff;
+  text-align: center;
+  transition: 1s ease-in-out;
 }
-.box:hover .start{
-  transform: rotatez(-5deg);
-  left:-10px;
+.answer {
+  left: -252px;
+  background: rgba(0,0,0,.1);
 }
-.box:hover .end{
-  transform: rotatez(5deg);
-  left: 10px;
+.item:hover .ask {
+  left: 252px;
 }
-/*
-知道这个属性后，这个就比较好写了，自己写的跟例子差的不多，就不写例子了
-还是很有意思的东西啊
-*/
+.item:hover .answer {
+  left: 0;
+}
+.box::before {
+  content: "?";
+  transform: rotate(15deg);
+  font-size: 25em;
+  font-weight: bold;
+  color: #FF6347;
+  position: absolute;
+  top: -40px;
+  left: 50px;
+  /*opacity: 0.5;*/
+  filter: opacity(0.5);
+}
+.title {
+  font-size: 2em;
+  color: #fff;
+  line-height: 60px;
+}
 </style>
 </head>
 <body>
   <div class="box">
-    <div class="start">HelloWorld</div>
-    <div class="end">HelloWorld</div>
+    <div class="title">Who am I?</div>
+    <div class="item">
+      <div class="ask">Who gives you milk</div>
+      <div class="answer">Cow</div>
+    </div>
+    <div class="item">
+      <div class="ask">Who gives you milk</div>
+      <div class="answer">Cow</div>
+    </div>
+    <div class="item">
+      <div class="ask">Who gives you milk</div>
+      <div class="answer">Cow</div>
+    </div>
   </div>
 </body>  
 <script type="text/javascript">
