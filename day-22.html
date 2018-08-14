@@ -1,0 +1,116 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画22-彩虹字</title>  
+<style type="text/css">
+html, body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  /*height: 100%;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  background-color: black;
+}
+/*
+拿到这个的时候，如果换我来写的话，我肯定会用之前写钻石的方式来写
+但是这个不是解决问题的方法啊,这样会让代码越发的复杂
+通过position跟overflow来使眼色层层叠加
+我可能会蠢得用top，外加一样宽高来设置不同的颜色分段
+*/
+.box {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 330px;
+  line-height: 1em;
+  font-weight: bold;
+  font-family: sans-serif;
+
+  position: relative;
+  /*color: transparent;*/
+}
+.box span::before, .box span::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation: changecolor 0.8s infinite alternate;
+}
+.box span:nth-child(1)::before {
+  height: calc(100% - 10% * 1);
+  color: #808080;
+  z-index: 1;
+  animation-delay: cals(0.8s - 0.1s * 1);
+}
+.box span:nth-child(1)::after {
+  height: calc(100% - 10% * 2);
+  color: #BC8F8F;
+  z-index: 2;
+  animation-delay: cals(0.8s - 0.1s * 2);
+}
+.box span:nth-child(2)::before {
+  height: calc(100% - 10% * 3);
+  color: #F08080;
+  z-index: 3;
+  animation-delay: cals(0.8s - 0.1s * 3);
+}
+.box span:nth-child(2)::after {
+  height: calc(100% - 10% * 4);
+  color: #FF7F50;
+  z-index: 4;
+  animation-delay: cals(0.8s - 0.1s * 4);
+}
+.box span:nth-child(3)::before {
+  height: calc(100% - 10% * 5);
+  color: #FF8C00;
+  z-index: 5;
+  animation-delay: cals(0.8s - 0.1s * 5);
+}
+.box span:nth-child(3)::after {
+  height: calc(100% - 10% * 6);
+  color: #FFD700;
+  z-index: 6;
+  animation-delay: cals(0.8s - 0.1s * 6);
+}
+.box span:nth-child(4)::before {
+  height: calc(100% - 10% * 7);
+  color: #FFE4B5;
+  z-index: 7;
+  animation-delay: cals(0.8s - 0.1s * 7);
+}
+.box span:nth-child(4)::after {
+  height: calc(100% - 10% * 8);
+  color: #F0E68C;
+  z-index: 8;
+  animation-delay: cals(0.8s - 0.1s * 8);
+}
+@keyframes changecolor {
+  form{
+    filter: opacity(1);
+  }
+  to {
+    filter: opacity(0.3);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    Web
+    <span data-text="web"></span>
+    <span data-text="web"></span>
+    <span data-text="web"></span>
+    <span data-text="web"></span>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
