@@ -1,0 +1,81 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画23-反色填充</title>  
+<style type="text/css">
+html, body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  /*height: 100%;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body {
+  /*background-color: black;*/
+}
+/*
+拿到这个的时候，如果换我来写的话，我肯定会用之前写钻石的方式来写
+但是这个不是解决问题的方法啊,这样会让代码越发的复杂
+通过position跟overflow来使眼色层层叠加
+我可能会蠢得用top，外加一样宽高来设置不同的颜色分段
+*/
+.box {
+  width: 400px;
+  height: 300px;
+  margin: 100px auto 0;
+}
+.item {
+  border: 1px solid black;
+  height: 50px;
+  width: 120px;
+  line-height: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  padding-left: 10px;
+  position: relative;
+  overflow: hidden;
+
+  background-color: white;
+}
+.item span {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.item::before {
+  position: absolute;
+  content: '';
+  top: 0px;
+  right:  calc(100% - 30px);
+  width: 155px;
+  height: 100%;
+  background-color: black;
+  border-radius: 0 50px 50px 0;
+  transition: all 1s ease;
+}
+.item:hover::before {
+  right: -25px;
+  border-radius:  0;
+}
+/*mix-blend-mode 还不是很理解这个属性，只知道加上就就可以了，还得研究下*/
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="item">
+      <span>Home</span>
+    </div>
+  </div>
+  <!-- <h2 class="pattern-overlay">
+    <span data-text="CSS纹理叠加"></span>
+    CSS纹理叠加
+  </h2> -->
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
