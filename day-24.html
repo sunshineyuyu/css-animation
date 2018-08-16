@@ -63,11 +63,75 @@ hahaha来回晃了，但是总觉得晃得不是那么回事，再研究下
 		transform: translateX(-40px);
 	}
 }
+.sea {
+	width: 300px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+
+	/*分出深浅来*/
+    background-color: whitesmoke;
+    background-image: linear-gradient(
+        darkblue,
+        rgba(255, 255, 255, 0) 80%,
+        rgba(255, 255, 255, 0.5));
+    border-radius: 5px;
+}
+.sea div {
+    position: absolute;
+    top: -250px;
+    left: -100px;
+    width: 500px;
+    height: 500px;
+    background: deepskyblue;
+    /*没有设置成50%这也是精华部分撒*/
+    border-radius: 43%;
+    filter: opacity(0.4);
+    animation: drift linear infinite;
+    /*
+    设置旋转的中心点为圆心的中心点，个人感觉50跟48一样的
+    但是48的话，会有错开的部分大点
+    */
+    transform-origin: 50% 48%;
+}
+/*
+animation-duration 动画完成一个周期所花费的秒或毫秒
+单独写了出啦，竟然不知道这是啥了
+*/
+.sea div:nth-of-type(1) {
+    animation-duration: 5s;
+}
+
+.sea div:nth-of-type(2) {
+    animation-duration: 7s;
+}
+
+.sea div:nth-of-type(3) {
+    animation-duration: 9s;
+    background-color: orangered;
+    filter: opacity(0.1);
+}
+/*
+卧槽，头一次发现这个东西可以只写from,没有to竟然都可以，
+惹不起，惹不起
+*/
+@keyframes drift {
+    from {
+        transform: rotate(360deg);
+    }
+}
+}
 
 </style>
 </head>
 <body>
   <div class="box">
+  	<div></div>
+  	<div></div>
+  	<div></div>
+  </div>
+  <!-- 例子 -->
+  <div class="sea">
   	<div></div>
   	<div></div>
   	<div></div>
