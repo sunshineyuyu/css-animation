@@ -17,6 +17,7 @@ html, body{
 }
 body {
   /*background-color: black;*/
+  font-size: 16px;
 }
 /*
 拿到这个的时候，如果换我来写的话，我肯定会用之前写钻石的方式来写
@@ -62,6 +63,64 @@ body {
   border-radius:  0;
 }
 /*mix-blend-mode 还不是很理解这个属性，只知道加上就就可以了，还得研究下*/
+
+.test {
+  position: relative;
+  height: 500px;
+}
+.test>div{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+
+  mix-blend-mode: difference;
+}
+.test div:nth-child(1){
+  background-color: red;
+  transform: translateX(30px);
+}
+.test div:nth-child(2){
+  background-color: green;
+  transform: translateY(60px);
+}
+.test div:nth-child(3){
+  background-color: blue;
+  transform: translateX(-30px);
+}
+.color {
+  /*background: burlywood;*/
+}
+.color p{
+  color: #fff;
+  background-image: linear-gradient(to left, red, green, blue);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; /*这一句相当于只剪切文字*/
+}
+.box2 span {
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+}
+.box2 {
+  position: relative;
+}
+.box2::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)
+}
+
 </style>
 </head>
 <body>
@@ -70,10 +129,20 @@ body {
       <span>Home</span>
     </div>
   </div>
-  <!-- <h2 class="pattern-overlay">
-    <span data-text="CSS纹理叠加"></span>
-    CSS纹理叠加
-  </h2> -->
+
+  <div class="test">
+    <div>reddd</div>
+    <div>green</div>
+    <div>blueee</div>
+  </div>
+  <!-- 流光问题 -->
+  <div class="color">
+    <p>this is test different color</p>
+  </div>
+  <!-- 文字渐变 -->
+  <div class="box2">
+    <span>我会文字颜色渐变哦a</span>
+  </div>
 </body>  
 <script type="text/javascript">
 

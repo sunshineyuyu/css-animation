@@ -1,0 +1,79 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画24-波浪效果</title>  
+<style type="text/css">
+html, body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  /*height: 100%;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box {
+	width: 300px;
+	height: 500px;
+	border: 1px solid #999;
+	position: relative;
+	overflow: hidden;
+}
+/*
+之前看了一个mix-blend-mode里边的三个圆边框的来回晃动的是个图
+，所以我这边截取圆的一部分，来实现波浪
+hahaha来回晃了，但是总觉得晃得不是那么回事，再研究下
+可能我这是水平的晃动，这边例子还有上下的晃动
+*/
+.box>div {
+	position: absolute;
+	top: -200px;
+	left: -100px;
+	width: 500px;
+	height: 500px;
+	filter: opacity(0.5);
+	border-radius: 50%;
+	animation: round 1s ease infinite alternate;
+}
+.box div:nth-child(1) {
+	background: #87CEEB;
+	top: -205px;
+	left: -120px;
+	animation-delay: 0.2s;
+}
+.box div:nth-child(2) {
+	background: #00CED1;
+	top: -190px;
+	left: -80px;
+	animation-delay: 0.6s;
+}
+.box div:nth-child(3) {
+	background: #1E90FF;
+	animation-delay: 0.9s;
+	/*transform: translateY(10px);*/
+}
+@keyframes round {
+	from {
+		transform: translateX(40px);
+	}
+	to{
+		transform: translateX(-40px);
+	}
+}
+
+</style>
+</head>
+<body>
+  <div class="box">
+  	<div></div>
+  	<div></div>
+  	<div></div>
+  </div>
+</body>  
+<script type="text/javascript">
+
+</script>
+</html>
