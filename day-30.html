@@ -1,0 +1,100 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画30-公告板</title>  
+<style type="text/css">
+body {
+  padding: 0;
+  margin: 0;
+  background: radial-gradient( #fff,#FFE4C4);
+}
+.box {
+  margin: 100px auto 0;
+  position: relative;
+  width: 400px;
+  padding-top: 80px;
+  animation: swing 3s ease-in-out infinite alternate;
+  transform-origin: 200px 0;
+}
+.box::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 185px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #A9A9A9;
+  box-shadow:2px 1px 1px #c3bebe;
+  z-index: 1;
+}
+.panel {
+  width: 400px;
+  height: 200px;
+  background: #FFDEAD;
+  border-radius: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 200px;
+  color: #CD5C5C;
+  font-size: 4em;
+  font-family: sans-serif;
+  text-shadow: 
+    0 2px 0 rgba(255, 255, 255, 0.3),
+    0 -2px 0 rgba(0, 0, 0, 0.7);
+}
+.rope{
+  position: absolute;
+  left: 200px;
+  top: 0px;
+  width: 150px;
+  height: 150px;
+  border: 4px solid #B22222;
+  transform: rotate(45deg);
+  transform-origin: 0 0;
+  border-bottom: none;
+  border-right: none;
+}
+.rope::before, .rope::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #B22222;
+  box-shadow:2px 1px 1px #c3bebe;
+}
+.rope::before {
+  top: 135px;
+  left: -15px;
+}
+.rope::after {
+  top: -15px;
+  left: 135px;
+}
+@keyframes swing {
+  from {
+    transform: rotate(20deg);
+  }
+  to {
+    transform: rotate(-20deg);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="rope"></div>
+    <div class="panel" contenteditable="true">
+      Thanks
+    </div>
+  </div>
+  <!-- <div>
+    <p>transform-origin 定位移动点</p>
+    <p>text-shadow 文字阴影</p>
+  </div> -->
+</body>
+</html>
