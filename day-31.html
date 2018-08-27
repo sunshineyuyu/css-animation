@@ -1,0 +1,84 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画31-假装乒乓球对打</title>  
+<style type="text/css">
+body {
+  padding: 0;
+  margin: 0;
+  background: black;
+}
+.box {
+  margin: 100px auto 0;
+  position: relative;
+  --width: 250px;
+  --lw: 40px;
+  --ll: 10px;
+  width: var(--width);
+  height: var(--width);
+  border: 10px solid #fff;
+  /*box-sizing: border-box;*/
+}
+.ball {
+  position: absolute;
+  top: calc((var(--width) -10px)/2);
+  left: calc(var(--ll) + 10px);
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  animation: goLeft 2s linear infinite alternate;
+}
+/*
+原本想写一个animation呢，但是好像实现不了，
+animation-direction：reverse跟alternate不能同时使用；
+所以分开写
+*/
+.box::before, .box::after {
+  position: absolute;
+  content: '';
+  border: 5px solid #fff;
+  height: 100px;
+}
+.box::before {
+  top: var(--lw);
+  left: var(--ll);
+  animation: goBottom 2s linear infinite alternate;
+}
+.box::after {
+  top: calc(var(--width) - 100px - var(--lw));
+  left: calc(var(--width) - var(--ll) - 10px);
+  animation: goTop 2s linear infinite alternate;
+
+}
+@keyframes goBottom {
+  from {
+    top: var(--lw);
+  }
+  to {
+    top: calc(var(--width) - 100px - var(--lw));
+  }
+}
+@keyframes goTop {
+  from {
+    top: calc(var(--width) - 100px - var(--lw));
+  }
+  to {
+    top: var(--lw);
+  }
+}
+@keyframes goLeft {
+  to {
+    left: calc(var(--width) - var(--ll) - 10px - 10px);
+  }
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="ball"></div>
+  </div>
+</body>
+</html>
