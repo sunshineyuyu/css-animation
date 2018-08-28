@@ -4,18 +4,94 @@
 <meta charset="utf-8"/>  
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Css 动画31-六边形按钮</title>  
+<title>Css 动画32-六边形按钮</title>  
 <style type="text/css">
 body {
   padding: 0;
   margin: 0;
   background: black;
 }
+.box {
+  width: 400px;
+  margin: 100px auto 0;
+  --gen: 1.732;
+  /* --r: 60px; */
+  --r: 3em;
+}
+/* 
+  这里有个问题，就是如果我用px来定义，就老发现会有多出来的部分，但是如果我用em就没有，真是神奇啊
+  而且，我的根号3写的也是1.732
+*/
+.item {
+  position: relative;
+  width: calc(var(--r) * var(--gen));
+  height: var(--r);
+  line-height: var(--r);
+  margin-bottom: 3em;
+
+  background: #B22222;
+  color: #fff;
+  /* text-transform: uppercase; */
+  text-align: center;
+}
+.item::before, .item::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #B22222;
+  z-index: -1;
+  filter: opacity(0);
+  transition: 1s ease-in;
+}
+.item:hover::before {
+  transform: rotate(60deg);
+  filter: opacity(1);
+}
+.item:hover::after {
+  transform: rotate(120deg);
+  filter: opacity(1);
+}
+.item::before {
+  transform: translateY(-100px) translateX(-70px) rotate(60deg);
+}
+.item::after {
+  transform: translateY(-100px) translateX(70px) rotate(120deg);
+}
+.box2 {
+  margin-top: 20px;
+}
+.box2 .item {
+  height: calc(var(--r) + 0.3em);
+  line-height: calc(var(--r) + 0.3em);
+}
+.box3 {
+  margin-top: 20px;
+}
+.box3 .item {
+  height: calc(var(--r) - 0.3em);
+  line-height: calc(var(--r) - 0.3em);
+}
 </style>
 </head>
 <body>
   <div class="box">
-    <div class="ball"></div>
+    <div class="item">home</div>
+    <div class="item">document</div>
+  </div>
+  <div class="box box2">
+    <div class="item">home</div>
+    <div class="item">document</div>
+  </div>
+  <div class="box box3">
+    <div class="item">home</div>
+    <div class="item">document</div>
+  </div>
+  <div>
+    <!-- <p>transform 可以同时添加多个属性，但是属性的先后会影响效果</p>
+    <p>计算问题</p> -->
   </div>
 </body>
 </html>
