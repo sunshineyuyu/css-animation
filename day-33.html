@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画32-牛奶文字</title>
+<style type="text/css">
+  body {
+    padding: 0;
+    margin: 0;
+    background: black;
+  }
+  .box {
+    width: 500px;
+    /* height: 300px; */
+    margin: 100px auto 0;
+    /* filter: opacity(0.5) blur(0.5);*/
+    filter: contrast(10);
+  }
+  .box p{
+    margin: 0;
+    color: #fff;
+    font-size: 5em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    filter: opacity(1) blur(10px);
+  }
+  .box p:nth-child(1){
+    transform: translateY(50%);
+    animation: show 4s ease-in-out infinite;
+  }
+  .box p:nth-child(2){
+    transform: translateY(-50%);
+    animation: hide 4s ease-in-out infinite;
+  }
+  @keyframes show {
+    0% {
+      filter: opacity(1) blur(8px);
+    }
+    50% ,100%{
+      filter: opacity(0) blur(10px);
+      letter-spacing: -20px;
+    }
+  }
+  @keyframes hide {
+    0%,50% {
+      filter: opacity(0) blur(10px);
+      letter-spacing: -20px;
+    }
+    75%{
+      filter: opacity(1) blur(10px);
+    }
+    100% {
+      filter: opacity(0) blur(8px);
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="box">
+    <p>Explorer</p>
+    <p>Discovery</p>
+  </div>
+    <!-- <p>transform 可以同时添加多个属性，但是属性的先后会影响效果</p>
+    <p>计算问题</p> -->
+  </div>
+</body>
+</html>
