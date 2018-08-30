@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Css 动画34-穿梭框</title>
+<style type="text/css">
+  body {
+    padding: 0;
+    margin: 0;
+    background: black;
+  }
+  .box {
+    width: 400px;
+    height: 100px;
+    line-height: 100px;
+    margin: 100px auto 0;
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    /*border: 0.1em solid #DC143C;*/
+  }
+  .box::before, .box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 10px solid #DC143C;
+    box-sizing: border-box;
+    transform-origin: 200px 50px;
+    animation: round 4s ease-in-out infinite;
+  }
+  .box::before{
+    border-right: none;
+    border-bottom: none;
+    /*border-color: #FFEFD5;*/
+    z-index: 1;
+  }
+  .box::after{
+    border-left: none;
+    border-top: none;
+    z-index: -1;
+  }
+  @keyframes round {
+    from{
+      transform: rotate(360deg);
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="box">
+    Error 404
+  </div>
+</body>
+</html>
