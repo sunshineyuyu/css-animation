@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day-35径向渐变画熊猫</title>
+  <style>
+    html,body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      background: #FA8072;
+    }
+    .box {
+      width: 21em;
+      height: 16em;
+      border: 0.5em solid #333;
+      border-top-left-radius: 11em;
+      border-top-right-radius: 11em;
+      border-bottom-left-radius: 11em 6em;
+      border-bottom-right-radius: 11em 6em;
+      background: #fff;
+      
+      position: relative;
+      background-image:
+        radial-gradient(ellipse at 50% 60%, #333 1.2em, transparent 1.2em),
+        radial-gradient(ellipse at 50% 80%, #555 0.6em, transparent 0.6em);
+      border-bottom-width: 1em;
+      box-shadow: inset 1em -1em 0 #eee;
+    }
+    .box::before {
+      content: '';
+      position: absolute;
+      width: 7em;
+      height: 4em;
+      left: 2.9em;
+      top: 5.5em;
+      background-color: #333;
+      border-radius: 50% 50% 45% 42%;
+      transform: rotate(-45deg);
+
+      box-shadow: 1em -7.2em 0 -0.4em #333;
+
+      background-image: 
+        radial-gradient(circle at 5.1em 2em, white 0.3em, transparent 0.3em), 
+        radial-gradient(circle at 4.6em 2em, #333 0.7em, transparent 0.7em), 
+        radial-gradient(circle at 4.5em 2em, white 1em, transparent 1em);
+      animation: before-animation 1s ease-in-out infinite alternate;
+    }
+    .box::after {
+      content: '';
+      position: absolute;
+      width: 7em;
+      height: 4em;
+      right: 2.9em;
+      top: 5.5em;
+      background-color: #333;
+      border-radius: 50% 50% 45% 42%;
+      /* border-radius: 50% 45% 42% 50%;   自己写的得比对着，这个感觉有点不对称了*/
+      transform: rotate(45deg);
+      box-shadow: -1em -7.2em 0 -0.4em #333;
+      background-image:
+        radial-gradient(circle at 2.4em 1.5em, white 0.3em, transparent 0.3em), 
+        radial-gradient(circle at 2.4em 2em, #333 0.7em, transparent 0.7em), 
+        radial-gradient(circle at 2.5em 2em, white 1em, transparent 1em);
+      animation: after-animation 1s ease-in-out infinite alternate -1s;      
+    }
+    @keyframes before-animation {
+      to {
+        transform: rotate(-40deg);
+        background-image:
+          radial-gradient(circle at 4.9em 1.8em, white 0.3em, transparent 0.3em), 
+          radial-gradient(circle at 4.4em 1.8em, #333 0.7em, transparent 0.7em), 
+          radial-gradient(circle at 4.5em 2em, white 1em, transparent 1em);
+      }
+    }
+    @keyframes after-animation {
+      to {
+        transform: rotate(40deg);
+        background-image:
+          radial-gradient(circle at 2.6em 1.3em, white 0.3em, transparent 0.3em), 
+          radial-gradient(circle at 2.6em 1.8em, #333 0.7em, transparent 0.7em), 
+          radial-gradient(circle at 2.5em 2em, white 1em, transparent 1em);
+      }
+    }
+/* 今天算是开眼了，真的没有想到哦，还可以这么玩，以后可以画简笔画了 */
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <!-- <div>
+    <p>border-radius 可以有两个参数，第一个参数表示水平边半径，第二个参数表示垂直半径，这个很有意思</p>
+    <p>radial-gradient 画圆，可以画椭圆，之类的</p>
+    <p>box-shadow 可以给第一个参数定义为inset，inset表示阴影为内阴影</p>
+    <p>vh定义当前的试图宽度，相对于视口的高度。视口被均分为100单位的vh</p>
+  </div> -->
+</body>
+</html>
