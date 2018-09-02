@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day36-日蚀</title>
+  <style>
+    html,body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: skyblue;
+      animation: sky-change 8s linear infinite;
+    }
+    .sky {
+      width: 1000px;
+      height: 200px;
+
+      position: relative;
+      /* background: black; */
+    }
+    .sun, .moon {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      border-radius: 50%;
+    }
+    .sun{
+      top: 0;
+      left: 400px;
+      background: gold;
+      box-shadow: 0 0 10px #fff;
+      animation: sun-change 8s linear infinite;
+    }
+    .moon {
+      top: 0;
+      left: 0;
+      background: grey;
+      animation: moon-change 8s linear infinite;
+    }
+/* 
+    认真了解下box-shadow 
+    box-shadow : （inset） length length length length color;
+    第一个length 是x轴的偏移量
+    第二个length 是y轴的偏移量
+    第一个length 是阴影的模糊程度，不可为负
+    第一个length 阴影的外延值，不可为负值
+    (inset) 可要可不要，写的话是指阴影为内阴影
+    box-shadow 可以多个属性相加，形成叠加阴影
+*/
+    @keyframes sun-change {
+      0%,100% {
+        box-shadow: 0 0 10px #fff;
+      }
+      50% {
+        box-shadow: 
+          0 0 50px 20px #FAFAD2;
+          /* 0 0 40px #fff,
+          0 0 80px #fff; */
+      }
+    }
+    @keyframes moon-change {
+      0% {
+        left: 0;
+        background: grey;
+      }
+      50% {
+        left: 400px;
+        background: black;
+      }
+      100% {
+        left: 800px;
+        background: grey;
+      }
+    }
+    @keyframes sky-change {
+      0%,100% {
+        background: skyblue;
+      }
+      50% {
+        background: black;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky">
+    <div class="sun"></div>
+    <div class="moon"></div>
+  </div>
+  <!-- <div>
+    <p>例子用了新的刻度vmin,跟昨天的vh都是新的刻度值，目前没有去学习这个到底是啥</p>
+  </div> -->
+</body>
+</html>
