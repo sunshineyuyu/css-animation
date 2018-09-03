@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day37-transition animation组合</title>
+  <style>
+    html,body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+    .box {
+      width: 400px;
+      height: 50vh;
+    }
+    :root {
+      --border: 3px;
+      --one-side-time: 0.1s;
+      --width: 10em;
+      --height: 4em;
+    }
+    .item {
+      width: var(--width);
+      height: var(--height);
+      line-height: var(--height);
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      /*box-sizing: border-box;*/
+      border:  solid #fff;
+      position: relative;
+    }
+
+    .item:hover {
+      color: #0f0;
+      /*box-shadow: 0 0 8em 10px rgba(0,255,0,0.5);
+      transition: box-shadow var(--one-side-time) ease-in-out calc(var(--one-side-time) * 4);*/
+      animation: pulse ease-out 1s calc(var(--one-side-time) * 4);
+    }
+    @keyframes pulse {
+      from {
+          box-shadow: 0 0 rgba(0, 255, 0, 0.4);
+      }
+
+      to {
+          box-shadow: 0 0 0 1em rgba(0, 255, 0, 0);
+      }
+    }
+
+    .item::before, .item::after {
+      content: '';
+      position: absolute;
+      width: 0px;
+      height: 0px;
+      visibility: hidden;
+    }
+    .item::before {
+      top: calc(0px - var(--border));
+      left: 0px;
+      border-top: var(--border) solid #0f0;
+      border-right: var(--border) solid #0f0;
+      transition:
+        width linear var(--one-side-time) calc(var(--one-side-time) * 3),
+        height linear var(--one-side-time) calc(var(--one-side-time) * 2),
+        visibility 0s calc(var(--one-side-time) * 4);
+    }
+    .item::after {
+      right: 0px;
+      bottom: calc(0px - var(--border));
+      border-bottom: var(--border) solid #0f0;
+      border-left: var(--border) solid #0f0;
+      transition:
+        height linear var(--one-side-time),
+        width linear var(--one-side-time) var(--one-side-time),
+        visibility 0s calc(var(--one-side-time) * 2);
+    }
+    .item:hover::before, .item:hover::after {
+      width: 100%;
+      height: calc(100% + var(--border));
+      visibility: visible;
+    }
+    .item:hover::before {
+      /*transition: 
+        visibility 0s,
+        width linear var(--one-side-time),
+        height linear var(--one-side-time) var(--one-side-time);*/
+    }
+    .item:hover::after {
+      transition: 
+        visibility 0s calc(var(--one-side-time) * 2),
+        width linear var(--one-side-time) calc(var(--one-side-time) * 2),
+        height linear var(--one-side-time) calc(var(--one-side-time) * 3);
+    }
+
+/*
+感觉今天的内容比较玄幻，捣鼓了好久
+这个例子，充分的说明了，
+transition 是属性变化是的动画效果
+这个例子里，鼠标进入动作是通过：hover里边的transition来实现的
+这也说明hover的等级要比本身的等级要高，也就是说，hover里的transition是覆盖了原本的元素的transition.
+之后的鼠标离开时，没有了hover里的transition，用的本身元素的transition
+这样实现了两套不同的运动方式
+
+
+animation 事变化效果，如果变化结束，就恢复原样
+*/
+    
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="item">
+      Home
+    </div>
+  </div>
+</body>
+</html>
