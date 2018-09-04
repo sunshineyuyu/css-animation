@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day38-阶梯文字</title>
+  <style>
+    html,body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+    .box {
+      width: 400px;
+      height: 400px;
+      color: #fff;
+      text-align: center;
+    }
+    .box > p {
+      margin: 0;
+      font-size: 4em;
+      text-transform: uppercase;
+    }
+    .box p:nth-child(odd) {
+      transform: skewY(-35deg) skewX(5deg) scale(1.2);
+    }
+    .box p:nth-child(even) {
+      transform: skewY(-35deg) skewX(45deg);
+    }
+
+    /*
+    skewY()设置的角度相同，才能使每个p标签都平行
+    transform 的旋转是 rotate()进行旋转
+    transform 的倾斜是 skew()进行旋转
+    两个是不同的概念
+    */
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>stay</p>
+    <p>hungry</p>
+    <p>stay</p>
+    <p>foolish</p>
+  </div>
+</body>
+</html>
