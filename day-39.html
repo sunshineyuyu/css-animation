@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day39-条纹心</title>
+  <style>
+    :root {
+      --height1: 100px;
+      --height2: 100px;
+      --height3: 100px;
+      --height4: 100px;
+      --margin: 0;
+    }
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at center, #00008B, black);
+    }
+    .box {
+      /*width: 500px;
+      height: 400px;*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+    .box>span {
+      display: inline-block;
+      margin: 0 8px;
+      width: 20px;
+      height: 100px;
+      background: rgba(255,255, 255,0.1);
+      border-radius: 20px;
+      /*box-shadow: 0 0 10px rgba(255,255,255,0.8);*/
+      /*box-shadow: 0 0 10px #fff;*/
+      animation: change 3s infinite;
+    }
+    /*
+    这个通过修改根目录的值来写变化，好像事完全没有变化的，不让你加个backgroung1234
+    如果一个一个写animation，感觉好多哦，不想写
+    */
+    @keyframes change{
+      0%,50%{
+        --height1: 100px;
+        --height2: 100px;
+        --height3: 100px;
+        --height4: 100px;
+        --margin: 0px;
+      }
+      100% {
+        --height1: 50px;
+        --height2: 120px;
+        --height3: 160px;
+        --height4: 180px;
+        --margin: 50px;
+      }
+    }
+    .box span:nth-child(1),.box span:nth-child(9) {
+      background: #FF4500;
+      height: var(--height1);
+    }
+    .box span:nth-child(2), .box span:nth-child(8) {
+      background: yellow;
+      height: var(--height2);
+    }
+    .box span:nth-child(3),.box span:nth-child(7) {
+      background: #00FF7F;
+      height: var(--height3);
+    }
+    .box span:nth-child(4),.box span:nth-child(6) {
+      background: #00BFFF;
+      margin-top: var(--margin);
+      height: var(--height3);
+    }
+    .box span:nth-child(5) {
+      background: #FF00FF;
+      margin-top: calc(var(--margin) *2);
+      height: var(--height4);
+    }
+    
+    /*
+    我跟例子的不同是
+    例子十八全局变量写在每一个span里的，然后animation还是用的元素属性
+    但是我把所有变量写在animation里了，然后等于animation的只是数值，所以会直接跳，没有属性的变化
+    */
+    /*例子里的写法*/
+    .heart {
+      width: 14em;
+      height: 11em;
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between; /*这个用的就比较巧妙了，鼓掌*/
+    }
+
+    .heart span {
+      width: 1em;
+      height: var(--h);
+      background-color: var(--c);
+      border-radius: 0.5em;
+      position: relative;
+      top: var(--t);
+      animation: beating 5s infinite;
+    }
+
+    .heart span:nth-child(1),
+    .heart span:nth-child(9) {
+      --c: orangered;
+      --h: 3em;
+      --t: 2.2em;
+    }
+
+    .heart span:nth-child(2),
+    .heart span:nth-child(8) {
+      --c: gold;
+      --h: 6em;
+      --t: 0.6em;
+    }
+
+    .heart span:nth-child(3),
+    .heart span:nth-child(7) {
+      --c: limegreen;
+      --h: 8em;
+      --t: 0;
+    }
+
+    .heart span:nth-child(4),
+    .heart span:nth-child(6) {
+      --c: dodgerblue;
+      --h: 9em;
+      --t: 0.8em;
+    }
+
+    .heart span:nth-child(5) {
+      --c: mediumpurple;
+      --h: 9.4em;
+      --t: 1.6em;
+    }
+
+  /*
+  最后的结束部分，看着好像事先后消失，感觉事利用了视觉效果，其实还是一起变化的
+  不同的颜色变成浅蓝色，越接近的越容易很快到一样，大概就是这个样子
+  */
+    @keyframes beating {
+      0%, 30% {
+        top: var(--t);
+        height: var(--h);
+        background-color: var(--c);
+        filter: blur(0);
+        width: 1em;
+      }
+
+      60%, 70% {
+        top: 25%;
+        height: 50%;
+        background-color: lightblue;
+        filter: blur(5px);
+        width: 0.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- <div class="box">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div> -->
+  <div class="heart">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</body>
+</html>
