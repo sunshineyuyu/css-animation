@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day40-铅笔</title>
+  <style>
+    html {
+      height: 100vh;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+    .box {
+      display: flex;
+      margin-top:;
+      justify-content: flex-start;
+    }
+    .head {
+      position: relative;
+      background: #FFE4B5;
+      width: 60px;
+      height: 50px;
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    }
+    .head::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background: black;
+    }
+    .body {
+      width: 400px;
+      height: 50px;
+      background: green;
+      position: relative;
+      font-size: 14px;
+      line-height: 50px;
+      color: #fff;
+      text-align:center;
+      letter-spacing: 2px;
+    }
+    .body::before, .body::after {
+      position: absolute;
+      content: "";
+      width: 400px;
+      height: 13px;
+      left: 0;
+    }
+    .body::before {
+      background: forestgreen;
+      top: 0;
+    }
+    .body::after {
+      bottom: 0;
+      background: darkgreen;
+    }
+    .circle {
+      width: 20px;
+      height: 50px;
+      background: #C0C0C0;
+      position: relative;
+    }
+    .circle::before, .circle::after {
+      position: absolute;
+      content: "";
+      width: 20px;
+      height: 13px;
+      left: 0;
+    }
+    .circle::before {
+      background: lightgray;
+      top: 0;
+    }
+    .circle::after {
+      bottom: 0;
+      background: darkgrey;
+    }
+    .eraser {
+      width: 60px;
+      height: 50px;
+      background: #FFC0CB;
+      position: relative;
+      border-radius: 0 8px 8px 0;
+    }
+    .eraser::before, .eraser::after {
+      position: absolute;
+      content: "";
+      width: 60px;
+      height: 13px;
+      left: 0;
+    }
+    .eraser::before {
+      background: #FFB6C1;
+      top: 0;
+      border-radius: 0 8px 0px 0;
+    }
+    .eraser::after {
+      bottom: 0;
+      background: #DB7093;
+      border-radius: 0 0px 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="head"></div>
+    <div class="body">
+      中华铅笔
+    </div>
+    <div class="circle"></div>
+    <div class="eraser"></div>
+  </div>
+</body>
+</html>
