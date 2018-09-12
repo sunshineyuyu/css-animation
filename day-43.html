@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day43-vuelogo</title>
+  <style type="text/css">
+    html, body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(lightgreen,white);
+    }
+    .box {
+      width: 260px;
+      height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+    .box>div {
+      position: absolute;
+      top: 0;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+      animation: down 2s ease-in-out infinite;
+    }
+    @keyframes down {
+      0% {
+        transform: translateY(calc(0px - var(--h)));;
+      }
+      40%, 70% {
+        transform: translateY(0);
+      }
+      100%{
+        transform: translateY( 260px );
+      }
+    }
+    .box div:nth-child(1) {
+      left: 0;
+      width: 260px;
+      height: 260px;
+      background: #3CB371;
+      --h: 260px;
+      /*transform: translateY(calc(0px - var(--h)));*/
+      /*transform: translateY( var(--h) );*/
+    }
+    .box div:nth-child(2) {
+      left: 30px;
+      width: 200px;
+      height: 200px;
+      background: black;
+      animation-delay: 0.2s;
+      --h: 200px;
+    }
+    .box div:nth-child(3) {
+      left: 60px;
+      width: 140px;
+      height: 140px;
+      --h: 140px;
+      background: white;
+      animation-delay: 0.4s;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+</html>
