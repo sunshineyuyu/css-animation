@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day44-变化的background</title>
+  <style type="text/css">
+    html, body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:black;
+    }
+    .box {
+      width: 260px;
+      border-left: 2px solid white;
+      text-align: center;
+      font-size: 18px;
+      text-transform: uppercase;
+      line-height: 32px;
+    }
+    .box span{
+      color: #fff;
+      display: inline-block;
+      width: 18px;
+      margin: 0 3px;
+      position: relative;
+      transition: .5s linear;
+      /*transition-delay: calc(var(--n) * 0.1s);*/
+    }
+    .box span::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      /*background: #fff;*/
+      /*transform: rotate(-28deg);*/
+      transition: 0.5s linear;
+      /*transition-delay: calc(var(--n) * 0.1s);*/
+      z-index: -1;
+    }
+    .box:hover span {
+      color: black;
+      transition-delay: calc(var(--n) * 0.1s);
+    }
+    .box:hover span::before {
+      width: 100%;
+      transform: rotate(-28deg);
+      transition-delay: calc(var(--n) * 0.1s);
+      background: #fff;
+    }
+    .box span:nth-child(1){
+      --n: 0;
+    }
+    .box span:nth-child(2){
+      --n: 1;
+
+    }
+    .box span:nth-child(3){
+      --n: 2;
+
+    }
+    .box span:nth-child(4){
+      --n: 3;
+
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <span>h</span>
+    <span>o</span>
+    <span>m</span>
+    <span>e</span>
+  </div>
+
+</body>
+</html>
