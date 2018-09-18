@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day47-蝴蝶标本</title>
+  <style type="text/css">
+    html, body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:black;
+    }
+    .box {
+      padding: 30px 50px;
+      background: #FFFFE0;
+      border: 20px solid #FFE4B5;
+      border-radius: 20px;
+      box-shadow: inset 10px 5px 10px 0 #A9A9A9;
+    }
+    .butterfly {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      border: 1px solid #fff;
+      background: black;
+    }
+    .butterfly>div {
+      position: absolute;
+    }
+    .butterfly div:nth-child(1), .butterfly div:nth-child(2){
+      background: yellow;
+      width: 80px;
+      height: 55px;
+      border-radius: 48%;
+    }
+    .butterfly div:nth-child(1) {
+      top: 30px;
+      left: 100px;
+      transform: rotate(90deg);
+    }
+    .butterfly::before, .butterfly::after {
+      position: absolute;
+      content: '';
+      /*background: red;*/
+      width: 90px;
+      height: 90px;
+      top: 0px;
+      left: 80px;
+      border: 2px solid red;
+      border-color: transparent red transparent transparent;
+      border-radius: 50%;
+      z-index: 20;
+      transform:rotate(10deg);
+    }
+    .butterfly::after {
+      top: 73px;
+      left: 150px;
+      border-color:  red transparent transparent transparent;
+      transform:rotate(-10deg);
+    }
+    .butterfly div:nth-child(2) {
+      top: 80px;
+      left: 150px;
+      transform: rotate(0deg);
+    }
+    .butterfly div:nth-child(3), .butterfly div:nth-child(4){
+      background: rgba(255, 0, 0, 0.6);
+      width: 70px;
+      height: 45px;
+      border-radius: 48%;
+    }
+    .butterfly div:nth-child(3) {
+      top: 75px;
+      left: 70px;
+      /*transform: rotate(90deg);*/
+    }
+    .butterfly div:nth-child(4) {
+      top: 115px;
+      left: 120px;
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="butterfly">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</body>
+</html>
