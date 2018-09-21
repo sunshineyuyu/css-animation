@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day48-蚊香</title>
+  <style type="text/css">
+  :root {
+    --min: 60px;
+  };
+    html, body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:black;
+    }
+    .box {
+      position: relative;
+      width: 500px;
+      height: 500px;
+    }
+    .box>div{
+      box-sizing: border-box;
+      position: absolute;
+      border-radius: 50%;
+      top: 250px;
+      left: 250px;
+      border: 20px solid green;
+      clip-path: polygon(0 50%, 0 0, 100% 0, 100% 50%);
+      transform: translateY(-50%) translateX(calc(0px - 50% - 20px * var(--n))) rotate(calc(180deg * var(--n)));
+      width: var(--width);
+      height: var(--width);
+    }
+    .box div:nth-child(1) {
+      --n: 0;
+      width: var(--min);
+      height: var(--min);
+    }
+    .box::before {
+      content: '';
+      background: green;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-10px) translateX(-30px);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    .box::after {
+      content: '';
+      background: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-10px) translateX(-190px);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      box-shadow: 0 0 1em white;
+      animation: blink 1s linear infinite alternate;
+      z-index: -1;
+    }
+    @keyframes blink {
+        to {
+            box-shadow: 0 0 0 white;
+        }
+    }
+    .box div:nth-child(2) {
+      --n: 1;
+      --width: calc((var(--min) - 20px) * 2 + 20px);
+    }
+    .box div:nth-child(3) {
+      --n: 0;
+      --width: calc((var(--min) - 20px) * 3 + 20px);
+    }
+    .box div:nth-child(4) {
+      --n: 1;
+      --width: calc((var(--min) - 20px) * 4 + 20px);
+    }
+    .box div:nth-child(5) {
+      --n: 0;
+      --width: calc((var(--min) - 20px) * 5 + 20px);
+      /*height: calc((var(--min) - 20px) * 5 + 20px);*/
+    }
+    .box div:nth-child(6) {
+      --n: 1;
+      --width: calc((var(--min) - 20px) * 6 + 20px);
+      /*height: calc((var(--min) - 20px) * 6 + 20px);*/
+    }
+    .box div:nth-child(7) {
+      --n: 0;
+      --width: calc((var(--min) - 20px) * 7 + 20px);
+      /*height: calc((var(--min) - 20px) * 7 + 20px);*/
+    }
+    .box div:nth-child(8) {
+      --n: 1;
+      --width: calc((var(--min) - 20px) * 8 + 20px);
+      /*height: calc((var(--min) - 20px) * 8 + 20px);*/
+    }
+    
+    /*例子里还用到了flex对内元素进行居中，就是相当于align-slef: center;*/
+    /*border-radius 带两个参数的真是见的少，我知道是有半径，但是不知道半径还可以不一样*/
+    .border {
+      width: 10em;
+      height: 10em;
+      background: yellow;
+      border-top-left-radius: 10em 5em;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <!-- <div class="border"></div> -->
+</body>
+</html>
