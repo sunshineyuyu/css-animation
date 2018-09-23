@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day49-ice cream</title>
+  <style type="text/css">
+    :root {
+        --min: 60px;
+    }
+    html,body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #3CB371;
+    }
+
+    .box {
+      width: 240px;
+      height: 350px;
+      border-radius: 80px 80px 10px 10px;
+      position: relative;
+
+      background-image: linear-gradient(
+        -25deg,
+        #FF1493 0%,
+        #FF1493 25%,
+        #00FA9A 25%,
+        #00FA9A 50%,
+        #FFFF00 50%,
+        #FFFF00 75%,
+        #00FFFF 75%,
+        #00FFFF 100%
+      );
+      animation: slide 2s linear infinite;
+      /* background-size: 120% 120%; */
+    }
+    .box::after {
+      position: absolute;
+      content: '';
+      width: 80px;
+      height: 120px;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        #B8860B 0%,
+        #B8860B 25%,
+        #DAA520 25%,
+        #DAA520 100%
+      );
+      border-radius: 0 0 40px 40px;
+    }
+    @keyframes slide {
+      /* from {
+        background-position: 0;
+      } */
+      to {
+        background-position: 0 100vh;
+      }
+    }
+    /* 
+    想通过background-size和background-position来使其进行滚动，但是发现因为设置的是background所以，不可控线条，
+    特别是最后出现了红色部分一直以一个三角形的形式出现，比较扯淡 
+    */
+    .ice {
+      width: 240px;
+      height: 350px;
+      border-radius: 80px 80px 10px 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ice::before {
+      position: absolute;
+      content: '';
+      width: 150%;
+      height: 120%;
+      left: -20%;
+      background-image: linear-gradient(
+        #FF1493 0%,
+        #FF1493 25%,
+        #00FA9A 25%,
+        #00FA9A 50%,
+        #FFFF00 50%,
+        #FFFF00 75%,
+        #00FFFF 75%,
+        #00FFFF 100%
+      );
+      transform: translateX(-15px) translateY(-15px) rotate(-25deg);
+      animation: icecream 100s linear infinite;
+      animation-play-state: paused;
+    }
+    /* 
+    这里的知识点终结应该是 animation-play-state 设置animation的暂停与继续的 
+    复习下 background-ground: linear-gradient();
+    background-position来让背景变动，但是其实我还是不太懂，这个变动是为啥。。
+
+    但是个人觉得比较有意思的是倾斜后，让before的box> ice的box,这样倾斜后，用hidden属性后，还可以看到完整的ice,不会有减少
+    同时这边的linear-gradient并没有添加倾斜，不然会出现一个三角的情况
+    */
+    .ice::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 200px;
+      top: 65px;
+      left: 30px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 10px;
+    }
+    .ice:hover::before {
+      animation-play-state: running;
+    }
+    @keyframes icecream {
+      to {
+        background-position: 0 1000vh;
+      }
+    }
+    .stick {
+      position: absolute;
+      content: '';
+      width: 80px;
+      height: 120px;
+      /* top: 0; */
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        #B8860B 0%,
+        #B8860B 25%,
+        #DAA520 25%,
+        #DAA520 100%
+      );
+      border-radius: 0 0 40px 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="box"></div> -->
+  <div>
+    <div class="ice"></div>
+    <div class="stick"></div>
+  </div>
+</body>
+
+</html>
