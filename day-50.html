@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day50-永动机</title>
+<style>
+  html,body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FAFAD2;
+  }
+  .box {
+    width: 300px;
+    height: 200px;
+    border-width: 5px 2px 20px 2px;
+    border-color: black;
+    border-style: solid;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .box>div {
+    width: 40px;
+    height: 150px;
+    position: relative;
+    /* border: 1px solid #000; */
+  }
+  .box>div::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 50%;
+  }
+  .box>div::before {
+    content: '';
+    height: 110px;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    border: 1px solid black;
+  }
+  .box>div:first-child {
+    transform-origin: 50% 0;
+    /* animation: collision 2s ease-in-out infinite; */
+    animation: collision 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    --deg: 45deg;
+  }
+  .box>div:last-child {
+    transform-origin: 50% 0;
+    /* animation: collision 2s ease-in-out infinite; */
+    --deg: -45deg;
+    animation: collision 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    animation-delay: 1s;
+  }
+  @keyframes collision{
+    /* 0%,50% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(var(--deg));
+    } */
+     0%{
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(var(--deg));
+    }
+  }
+  /* 
+  只能说例子里的是真牛顿永动力，我这个，速度什么的可能跟不上，太假了。。。
+  cubic-bezier是曲线运动，还是有机会好好研究下
+   */
+</style>
+</head>
+<body>
+  <div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+</html>
