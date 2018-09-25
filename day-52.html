@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day52-自转，公转</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #008080;
+  }
+  .box {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    animation: maxround 6s linear infinite;
+  }
+  .box::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 20px solid #E0FFFF;
+    z-index: 5;
+  }
+  .wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    top: -30px;
+    left: -30px;
+    /*animation: maxround 5s linear infinite;*/
+  }
+  .wrap>div {
+    width: 40px;
+    height: 40px;
+    background: #00CED1;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 60px 60px;
+    animation: minround 3s linear infinite;
+  }
+  .wrap>div:nth-child(1) {
+  }
+  .wrap>div:nth-child(2) {
+    animation-delay: 1s;
+  }
+  .wrap>div:nth-child(3) {
+    animation-delay: 2s;
+    /*background: red;*/
+  }
+  @keyframes minround {
+    0% {
+      transform: rotate(0);
+      z-index: 10;
+    }
+    33.33% {
+      transform: rotate(120deg);
+      z-index: 10;
+    }
+    66.69% {
+      transform: rotate(240deg);
+      z-index: 1;
+    }
+    100% {
+      transform: rotate(360deg);
+      z-index: 1;
+    }
+  }
+  @keyframes maxround {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /*
+  我这边可以让三个小球自动的转起来，有进有出，
+  但是大圈圈的话，不行，
+  但是我这个也没问题，发现这个问题是z-index的问题，还得研究下这个问题。。
+  */
+  /*
+  卧槽，我发现我写的都没有问题，
+  思路也没有问题，至于为什么transform会影响 z-index,这是个未知问题
+
+  但是人家例子牛逼的是，反正整体是个圆，
+  圆心什么的，都不变，所以，直接转整个最大的就好了
+  */
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="wrap">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</body>
+
+</html>
