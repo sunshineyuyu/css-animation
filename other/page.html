@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>page 分页</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #DCDCDC;
+    }
+    .pages {
+
+    }
+    .page {
+      display: inline-block;
+      min-width: 2em;
+      height: 2em;
+      margin: 0 0.1em;
+      line-height: 2em;
+      background: #fff;
+      text-align: center;
+      border: 1px solid #696969;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .active {
+      border-color: #00BFFF;
+      color: #00bfff;
+    }
+    .more {
+      border-width: 0;
+      cursor: default;
+    }
+    .next-pre {
+      padding: 0 0.8em;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="pages">
+    <span class="page next-pre" @click="changePage(currentPage - 1)">上一页</span>
+    <span v-for="(value, key) in pageList" class="page" v-bind:class="{active: value == currentPage, more: value == '...'}" @click="changePage(value)">{{value}}</span>
+    <span class="page next-pre" @click="changePage(currentPage + 1)">下一页</span>
+  </div>
+</body>
+<script>
+
+  function getPageList (totalCount, currentPage) {
+    const total = 9; //全部展示时的页数
+    const cur = currentPage; //当前页面
+    let showlist = [];
+    // var pageLength = 20;
+    var pageLength = totalCount;
+    if(pageLength <= total) {
+      showlist = Array.from({length: 9},(v,i) => i + 1);
+    }
+    // 如果后半部分有省略号,前边是 1-7 。。。 （代表两个以上数字）最后的长
+    // 此时 1,2,3,4,5,6,7, ..., 10
+    // 7 = total - 1(结尾的一个位) - 1(省略号一个位)
+    // 5 = total/2 + 1
+    if(cur <= 5 ) {
+      showlist = [...Array.from({length: 7}, (v,i) => i+1), '...', pageLength];
+    }
+    //如果是前半部分带... 那么后边也是7个数
+    if(cur >= pageLength - 2 - 2) {
+      showlist = [1, '...', ...Array.from({length: 7},(v, i) => {return pageLength - (7 - i - 1); })];
+    }
+
+    //一旦超过这两个接线就会变成 中间显示
+    if(cur > 5 && cur < pageLength - 2 - 2){
+      showlist = [1, '...', ...Array.from({length: 5},(v,i) => cur - 2 + i), '...', pageLength];
+    } 
+    return showlist;
+    // console.log(showlist);
+  }
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      currentPage: 1,
+      total: 20,
+      pageList: null,
+    },
+    methods: {
+      changePage(cur) {
+        if(cur <= 0) return;
+        if(cur > this.total) return;
+        console.log(cur);
+        if(cur == '...') return;
+        this.currentPage = cur;
+        this.pageList = getPageList(this.total, this.currentPage);
+      }
+    },
+    mounted: function() {
+      this.currentPage = 1;
+      this.changePage(this.currentPage);
+    },
+  })
+
+// 开始写点常用的东西，比如常用的样式（input之类的）常用的方法，这之类的
+// 虽然没啥意义，但是写出来总比看别人写的要好很多
+</script>
+</html>
