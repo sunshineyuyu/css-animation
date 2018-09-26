@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day53-飘动的loading</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #008080;
+  }
+  .box {
+    width: 400px;
+    height: 300px;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .box span {
+    margin: 0 0.2em;
+    font-size: 2em;
+    color: #fff;
+    animation: fly 2s ease-in-out infinite;
+  }
+  .box span:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .box span:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .box span:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .box span:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .box span:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  .box span:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+  @keyframes fly {
+    0% {
+      transform: translateX(400px) rotate(90deg) translateY(100px);
+      filter: opacity(0);
+    }
+    40% , 60%{
+      transform: translateX(0) rotate(0deg) translateY(0px);
+      filter: opacity(1); 
+    }
+    100% {
+      transform: translateX(-400px) rotate(-90deg) translateY(100px);
+      filter: opacity(0);
+    }
+    20% {
+      color: #FFFF00;
+    }
+    40% {
+      color: #00FF00;
+    }
+    60% {
+      color: #66CDAA;
+    }
+    80% {
+      color: #1E90FF;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <span>L</span>
+    <span>O</span>
+    <span>A</span>
+    <span>D</span>
+    <span>I</span>
+    <span>N</span>
+    <span>G</span>
+  </div>
+</body>
+
+</html>
