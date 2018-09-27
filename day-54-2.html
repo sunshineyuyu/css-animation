@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day54-2 moon festival</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00008B;
+  }
+  .festival {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  .rabbit {
+    position: absolute;
+    bottom: 80px;
+    left: 200px;
+    width: 140px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    background-image: 
+    radial-gradient(circle at 119px 32px, #fff 4px,transparent 4px),
+    radial-gradient(circle at 120px 30px, #000 11px, transparent 11px);
+    transform: rotate(-10deg);
+    z-index: 10;
+  }
+  /*还是得强调一下，transform-origin的距离还是说的当前元素的本身，跟其他别的无关*/
+  .rabbit::before, .rabbit::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    width: 60px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transform-origin: 0 0;
+    animation: rears 1s ease-in-out infinite;
+  }
+  .rabbit::before {
+    transform: rotate(225deg);
+    --rot: 225deg;
+    --dufu: 3deg;
+  }
+  .rabbit::after {
+    transform: rotate(260deg);
+    --rot: 260deg;
+    --dufu: -3deg;
+  }
+  @keyframes rears {
+    0%, 100% {
+      transform: rotate(calc(var(--rot) + var(--dufu)));
+    }
+    50% {
+      transform: rotate(calc( var(--rot) - var(--dufu) ) );
+    }
+  }
+  .moon {
+    position: absolute;
+    top: 100px;
+    right: 200px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: lightyellow;
+    box-shadow: 
+        0 0 10px 0 #fff,
+        0 0 30px 0 #fff,
+        0 0 80px 0 #fff
+        ;
+    z-index: 10;
+  }
+  .grassland {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: green;
+    display: flex;
+    flex-direction: row;
+  }
+  .sky {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    /*background: #fff;*/
+  }
+  .sky span {
+    position: absolute;
+    display: inline-block;
+    /*width: 20px;
+    height: 20px;*/
+    background: #FFFF00;
+    border-radius: 50%;
+    z-index: 5;
+    /*left: 100px;
+    top: 100px;*/
+    clip-path: polygon(50% 0, 60% 40%, 100% 50%,60% 60% ,50% 100%,40% 60%, 0 50% , 40% 40%);
+    animation: buling 1s ease-in-out infinite;
+  }
+  @keyframes buling {
+    0%, 100% {
+      /*box-shadow: inset 0 0 20px 20px yellow;*/
+      filter: opacity(0.3);
+    }
+    50% {
+      filter: opacity(1);
+
+      /*box-shadow: inset 0 0 20px 20px lightyellow;*/
+    }
+  }
+  /*
+  总结：
+  草地没有画出来，css研究了半天，不太有直接的操作，，其他别的想想法是相切的圆，来回切。。。
+  感觉还是很没有设计感，捣鼓了半天还是出来，感觉还是很不错的
+  */
+</style>
+</head>
+<body>
+  <div class="festival">
+    <div class="moon"></div>
+    <div class="rabbit"></div>
+    <!-- <canvas class="grassland" id="grassland"></canvas> -->
+    <div class="sky" id="sky"></div>
+  </div>
+</body>
+<script type="text/javascript">
+  /*var canvas = document.getElementById('grassland');
+  var grass = canvas.getContext('2d');
+  grass.beginPath();
+  grass.moveTo(0, 200);
+  grass.bezierCurveTo(100, 0, 200, 200, 300, 20);
+  grass.fillStyle = 'yellow';
+  grass.fill();*/
+  var sky = document.getElementById('sky');
+  var W = document.documentElement.clientWidth;
+  
+  function getRandom(x){
+    return parseInt(x * Math.random());
+  }
+
+  for(var i = 0; i < 40; i++) {
+    var span = document.createElement('span');
+    var width = (getRandom(15) + 8) + 'px';
+    span.style.width = width;
+    span.style.height = width;
+    span.style.top = getRandom(400) + 'px';
+    span.style.left = getRandom(W) + 'px';
+    span.style['animation-delay'] =  Math.random() + 's';
+    sky.appendChild(span);
+  }
+</script>
+
+</html>
