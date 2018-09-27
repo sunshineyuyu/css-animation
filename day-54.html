@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day54-象棋棋盘</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2E8B57 ;
+  }
+  .box {
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    background: #DEB887;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .box>div {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .box>div>span {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+  .box>div:nth-child(even) span:nth-child(odd) {
+    background: rgba(0,0,0,0.6);
+  }
+  .box>div:nth-child(odd) span:nth-child(even) {
+    background: rgba(0,0,0,0.6);
+  }
+  /*
+  我这边没有加入象棋的图标了，主要是弄了个棋盘出来
+  那边的棋盘是用的table-cell，我现在反而感觉flex用的7之类的好顺手
+  */
+</style>
+</head>
+<body>
+  <div class="box">
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</body>
+
+</html>
