@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day55-太阳月亮地球</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+  }
+  .box {
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .sun {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    background: #FFFF00;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 5px rgba(255,255,255, 0.8);
+    animation: moonround 8s linear infinite;
+  }
+  .earth {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: lightskyblue;
+    border-radius: 50%;
+    top: -140px;
+    left: calc(70px - 25px);
+    animation: moonround 2s linear infinite;
+    z-index: 10;
+  }
+  .moon {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #C0C0C0;
+    border-radius: 50%;
+    top: -40px;
+    left: calc(25px - 7px);
+    z-index: 10;
+  }
+  .earth::after,.sun::after {
+    content: '';
+    position: absolute;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    border-color: white transparent transparent transparent;
+    border-width: 0.1em 0.1em 0 0;
+    z-index: 5;
+    transform: rotate(-45deg);
+  }
+  .earth::after {
+    top: -33px;
+    left: -33px;
+    width: 116px;
+    height: 116px;
+  }
+  .sun::after {
+    top: calc( 0px - 140px + 25px);
+    left: calc( 0px - 140px + 25px);
+    width: 370px;
+    height: 370px;
+  }
+  @keyframes moonround{
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="sun">
+      <div class="earth">
+        <div class="moon"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
