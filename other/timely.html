@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript响应式的最佳解释（用js实现 vue原理）</title>
+</head>
+<body>
+	<div>look at console</div>
+</body>
+<script type="text/javascript">
+
+	class Dep {
+		constructor(){
+			this.subscribers = [];
+		}
+		depend() {
+			if(target && !this.subscribers.includes(target)) {
+				console.log(`depend ${target}`);
+				this.subscribers.push(target);
+			}
+		}
+		notify() {
+			this.subscribers.forEach(sub => sub());
+		}
+	}
+	// const dep = new Dep();
+
+	// let price = 10;
+	// let quantity = 1;
+	// let total = 0;
+	let data = {
+		price: 10,
+		quantity: 1,
+	}
+
+	let internalValue = data.price;
+
+	Object.keys(data).forEach(key => {
+		let internalValue = data[key];
+
+		const dep = new Dep();
+
+		Object.defineProperty(data, key,{
+			get() {
+				console.log(`Getting price ${key}: ${internalValue}`);
+				dep.depend(); //remember this target we're runing;
+				return internalValue;
+			},
+			set(newVal){
+				console.log(`Setting price ${key}: ${newVal}`);
+				internalValue = newVal;
+				dep.notify(); //replay store function
+			}
+		});
+	})
+
+	let target = null;
+
+	/*target =() => {
+		total = price * quantity;
+	}
+
+	let storage = [];
+	function record (){
+		storage.push(target);
+	}
+	record();
+	target();
+
+	function replay () {
+		storage.forEach(run => run());
+	}*/
+	
+	function watcher(myFun) {
+		console.log('define target');
+		target = myFun;
+		console.log('running target');
+		target(); //runing target here we can use data[key] getter ,then subscrib target
+		target = null;
+		console.log('end target');
+	}
+
+	watcher(()=>{data.total = data.price * data.quantity});
+	// watcher(() => {data.salePrice = data.price * 0.9});
+</script>
+</html>
