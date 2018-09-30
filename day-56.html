@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day56-程序员的生活</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    background: #C0C0C0;
+    font-size: 1.8em;
+  }
+  .box>div {
+    padding-left: 1em;
+    margin: 10px 0;
+  }
+  .box>div:not(:last-child){
+    animation: show 2s linear infinite;
+    --time: 2s;
+  }
+  .box>div:first-child,.box>div:last-child{
+    padding-left: 0;
+  }
+  .box>div:nth-child(2) {
+    /*animation-delay: 0.2s;*/
+    animation-delay: calc(var(--time) * 0.2);
+  }
+  .box>div:nth-child(3) {
+    animation-delay: calc(var(--time) * 0.2 * 2);
+  }
+  .box>div:nth-child(4) {
+    animation-delay: calc(var(--time) * 0.2 * 3);
+  }
+  .box>div:nth-child(5) {
+    animation-delay: calc(var(--time) * 0.2 * 4);
+  }
+  @keyframes show {
+    0%, 20%{
+      background: #00BFFF;
+      color: #fff;
+    }
+    26%, 100% {
+      background: transparent;
+      color: #333;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div>function repeat() {</div>
+    <div>eat();</div>
+    <div>sleep();</div>
+    <diV>code();</diV>
+    <div>repeat();</div>
+    <div>}</div>
+  </div>
+</body>
+
+</html>
