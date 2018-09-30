@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day57-黑夜给了我黑色眼睛</title>
+<style>
+  html,body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black
+  }
+  .box {
+    width: 600px;
+    height: 500px;
+    padding: 10px;
+    /*background: #C0C0C0;*/
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .left, .right {
+    --height: 100px;
+    --eyew: 200px;
+    width: var(--eyew);
+    height: var(--height);
+    background: #fff;
+    position: relative;
+    text-align:center;
+  }
+  .left {
+    border-radius: calc(var(--height)/2)  0 calc(var(--height)/2) 0;
+    transform-origin: 100% 0;
+    transform: rotate(10deg);
+  }
+  .right{
+    border-radius: 0 calc(var(--height)/2) 0 calc(var(--height)/2);
+    transform-origin: 0 0;
+    transform: rotate(-10deg);
+  }
+  .left::after, .right::after {
+    --width: 40px;
+    content: '';
+    height: 100%;
+    /*position: absolute;*/
+    /*width: var(--width);*/
+    /*top: 0;
+    left: calc((var(--eyew) - var(--width))/2);*/
+    background: black;
+    display: inline-block;
+    animation: blinking-left 1s linear infinite;
+  }
+  .left::after {
+    /*border-radius: 20px  0 20px 0;*/
+    border-radius:  calc(var(--width)/2) 0 calc(var(--width)/2) 0 ;
+
+  }
+  .right::after {
+    border-radius:   0 calc(var(--width)/2) 0 calc(var(--width)/2);
+  }
+  @keyframes blinking-left{
+    0%,80% ,100% {
+      width: 40px;
+    }
+    40% {
+      width: 5px;
+    }
+  }
+  @keyframes blinking-right{
+    0%, 100% {
+      width: 40px;
+    }
+    50% {
+      width: 5px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</body>
+
+</html>
