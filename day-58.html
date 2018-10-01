@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-58 鹦鹉酱</title>
+<style>
+  html, body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* align-items: center; */
+    width: 10em;
+    height: 10em;
+    position: relative;
+    /* transition: round 1s linear; */
+    background: radial-gradient(circle at 3em 3em, black 1em, transparent 1em);
+    --time: 0.2s;
+    transition: all var(--time) linear;
+  }
+  .box::before {
+    position: absolute;
+    content: '';
+    top: -1em;
+    left: -1em;
+    width: 100%;
+    height: 100%;
+    border: 1em solid #F08080;
+    border-color: #F08080 transparent transparent #F08080 ;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+    transition: all var(--time) linear;
+  }
+  .box::after {
+    position: absolute;
+    content: '';
+    top: 5em;
+    left: 5em;
+    width: 2em;
+    height: 2em;
+    background: orange;
+    border-bottom-right-radius:  100% 100%;
+  }
+  .box div {
+    width: 5em;
+    height: 5em;
+    transition: var(--time) linear;
+  }
+  .box div:nth-child(1) {
+    /* border-top-left-radius:  100% 100%;
+    background: #fff; */
+    transform-origin: 100% 100%;
+  }
+  .box div:nth-child(2) {
+    background:#FFFF00;
+    border-top-right-radius:  100% 100%;
+    transform-origin: 0 100%;
+  }
+  .box div:nth-child(3) {
+    background: #DCDCDC;
+    border-bottom-left-radius:  100% 100%;
+    transform-origin: 100% 0
+  }
+  .box:hover{
+    transform: rotate(90deg);
+  }
+  .box:hover::before {
+    /* transform: rotate(0deg); */
+    border-color: #20B2AA #20B2AA transparent transparent;
+  }
+  .box:hover>div{
+    transform: rotate(-180deg);
+  } 
+  .box:hover div:nth-child(2){
+    background: #FFD700;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+</html>
