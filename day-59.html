@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-59 🌈文字</title>
+<style>
+  html,
+  body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+  }
+  .box p {
+    font-size: 20vw;
+    color: white;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    background-image: linear-gradient(
+      to right,
+      orangered,
+      orange,
+      gold,
+      lightgreen,
+      cyan,
+      dodgerblue,
+      mediumpurple,
+      hotpink,
+      orangered);
+    /* 跟vh有点相似 */
+    background-size: 110vw; 
+    /* 按照文字进行切割，这个比较有意思的东西 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: sliding 30s linear infinite;
+  }
+  @keyframes sliding {
+    to {
+        background-position: -2000vw;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <p>thanks</p>
+  </div>
+</body>
+</html>
