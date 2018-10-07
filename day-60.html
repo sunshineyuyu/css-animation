@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-60 乐高积木</title>
+<style >
+  html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    width: 500px;
+    height: 500px;
+  }
+  .wrap {
+    position: relative;
+  }
+  .center,.left,.right {
+    position: absolute;
+    /* width: 200px;
+    height: 200px; */
+    background: #00BFFF;
+  }
+  .left{
+    top:141px;
+    width: 100px;
+    height: 100px;
+    transform:  skewY(45deg);
+    transform-origin: right;
+  }
+  .right{
+    top:141px;
+    width: 200px;
+    height: 100px;
+    left: 100px;
+    transform:  skewY(-45deg);
+    transform-origin: left;
+  }
+  /* 这个是算的是值 */
+  .center {
+    width: 283px;
+    height: 141px;
+    left: 100px;
+    /* top: -141px; */
+    transform-origin: 0 100%;
+    background: red;
+    transform: rotate(-45deg);
+  }
+  .center .li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    height:  50%;
+  }
+  .center .li div {
+    /* position: absolute; */
+    width: 50px;
+    height: 60px;
+    border-radius: 50%;
+    background: yellow;
+    /* left: calc(5px * var(--n) + 50px * calc(var(--n) - 1));
+    top: 5px; */
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="wrap">
+      <div class="center">
+        <div class="li">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="li">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div></div>
+  </div>
+</body>
+</html>
