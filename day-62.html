@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-61 咖啡壶</title>
+<style>
+  html,body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #008B8B;
+  }
+
+  .box {
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    animation: pouring 3s linear infinite alternate;
+  }
+  .box>div {
+    box-sizing: border-box;
+  }
+  .cover {
+    width: 180px;
+    height: 70px;
+    background: #FFD700;
+    border-radius: 60px 60px 0 0;
+    border-right: 10px solid #FF8C00;
+    border-bottom: 10px solid #FF8C00;
+    position: relative;
+    animation: upset 1s linear infinite;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    background: #DC143C;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-left-color: #fff;
+    transform: rotate(45deg);
+  }
+  .pot {
+    width: 180px;
+    height: 120px;
+    background: #4B0082;
+    border-radius: 0 0 60px 60px;
+    border-right: 10px solid #00008B;
+    position: relative;
+  }
+  .pot::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-left-color: #fff;
+    transform: rotate(-45deg);
+  }
+  .pot .handle {
+    width: 40px;
+    height: 20px;
+    position: absolute;
+    top: 20px;
+    background: #FF8C00;
+  }
+  .handle:nth-child(1) {
+    border-radius: 10px 0 0 10px;
+    left: -40px;
+  }
+  .handle:nth-child(2) {
+    border-radius: 0 10px 10px 0;
+    left: 180px;
+  }
+  @keyframes upset {
+    0%, 100% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(5px);
+    }
+
+  }
+
+</style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="cover"></div>
+    <div class="pot">
+      <div class="handle"></div>
+      <div class="handle"></div>
+    </div>
+  </div>
+</body>
+
+</html>
