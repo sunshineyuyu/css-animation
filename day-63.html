@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-63 面包机</title>
+<style>
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #008B8B;
+}
+.box {
+  width: 400px;
+  height: 400px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  animation: pouring 3s linear infinite alternate;
+}
+.box div {
+  box-sizing: border-box;
+}
+.brake{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #FFD700;
+  border-radius: 20px;
+  border-right: 10px solid #FFA500;
+  transform: translateY(20px);
+  animation: break 3s linear infinite;
+}
+.brake::after {
+  position: absolute;
+  top: 110px;
+  right: -80px;
+  content: '';
+  width: 40px;
+  height: 15px;
+  border-radius: 10px;
+  background: #FF4500;
+}
+.toaster {
+  position: relative;
+  width: 180px;
+  height: 150px;
+  background: #3CB371;
+  border-radius: 30px;
+  border-right: 15px solid #2E8B57;
+  z-index: 10;
+}
+.icon {
+  position: absolute;
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  top: 20px;
+  right: 20px;
+}
+.toaster::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-left-color: white;
+  transform: rotate(45deg);
+}
+.toaster::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-left-color: white;
+  transform: rotate(-135deg);
+}
+.footer {
+  position: relative;
+  width: 180px;
+}
+.footer::before, .footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 15px;
+  width: 10px;
+  background: #FF4500;
+}
+.footer::before {
+  left: 40px;
+}
+.footer::after {
+  right: 40px;
+}
+@keyframes break{
+  0%, 75% {
+    transform: translateY(20px);
+  }
+  25%,50% {
+    transform: translateY(100px);
+  }
+
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="brake"></div>
+    <div class="toaster">
+      <div class="icon"></div>
+    </div>
+    <div class="footer"></div>
+  </div>
+</body>
+
+</html>
