@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-64 足球场</title>
+<style>
+
+:root {
+  --width: 15em;
+  --height: 20em;
+  --dwidth: 2em;
+  --dheight: 5em;
+  --pzWhith: 5em;
+  --pzHeight: 9em;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F4A460;
+}
+.box {
+  width: 15em;
+  height: 20em;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: green;
+  padding: 2em;
+  padding-right: 0;
+
+}
+.box div {
+  box-sizing: border-box;
+}
+.field {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid white;
+}
+.corner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.corner::before, .corner::after {
+  position: absolute;
+  content: '';
+  width: 2em;
+  height: 2em;
+  left: calc(-1em - 2px);
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+.corner::before{
+  top: calc(-1em - 2px); /*减去border的宽度*/
+  border-right-color: #fff;
+}
+.corner::after{
+  bottom: calc(-1em - 2px); /*减去border的宽度*/
+  border-top-color: #fff;
+}
+.door {
+  position: absolute;
+  top: calc(var(--height) / 2 - 5em /2);
+
+  left: -2px;
+  width: var(--dwidth);
+  height: var(--dheight);
+  border: 2px solid transparent;
+  border-color: #fff #fff #fff transparent;
+}
+.penalty-zone {
+  position: absolute;
+  width: var(--pzWhith);
+  height: var(--pzHeight);
+  top: calc(var(--height) / 2 - var(--pzHeight) /2);
+  left: -2px;
+  border: 2px solid transparent;
+  border-color: #fff #fff #fff transparent;
+}
+/*点球点*/
+.penalty-zone::before {
+  content: '';
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  left: calc(var(--dwidth) + (var(--pzWhith) - var(--dwidth))/2 - 0.5em/2 - 2px);
+  top: calc(var(--pzHeight)/2 - 0.5em/2 - 2px);
+  background: white;
+  border-radius: 50%;
+}
+.penalty-zone::after {
+  content: '';
+  position: absolute;
+  width: 2em;
+  height: 4em;
+  left: calc(var(--pzWhith) - 2em/2 - 2px - 2px);
+  top: calc((var(--pzHeight) - 4em - 4px)/2);
+  /*background: white;*/
+  border-radius: 50%;
+  border: 2px solid #fff;
+  clip-path: polygon(50% 0, 101% 0, 101% 100%, 50% 100%)
+}
+.center {
+  position: absolute;
+  width: var(--dheight);
+  height: var(--dheight);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  right: calc(0em - var(--dheight)/2 - 2px);
+  top: calc((var(--height) - var(--dheight))/2 - 2px);
+  clip-path: polygon(0 0, 50.5% 0, 50.5% 100%, 0 100%);
+}
+.center::before {
+  content: '';
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  background: white;
+  border-radius: 50%;
+  top: calc((var(--dheight) - 0.5em)/2 - 2px);
+  left: calc((var(--dheight) - 0.5em)/2 - 0.5em/2 + 1px)
+}
+.right {
+  transform: rotate(180deg);
+}
+.right .field {
+  border-right-width: 0;
+}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="field">
+      <div class="corner"></div>
+      <div class="door"></div>
+    	<div class="penalty-zone"></div>
+      <div class="center"></div>
+    </div>
+  </div>
+  <div class="box right">
+    <div class="field">
+      <div class="corner"></div>
+      <div class="door"></div>
+      <div class="penalty-zone"></div>
+      <div class="center"></div>
+    </div>
+  </div>
+</body>
+
+</html>
