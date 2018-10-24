@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-65 摇晃的loadding</title>
+<style>
+  html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    position: relative;
+    width: 20em;
+    height: 20em;
+    /* background: white; */
+    border-top: 10px solid deeppink;
+    border-radius: 50%;
+    box-sizing: border-box;
+    --direction: 1;
+    animation: round 2s linear infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box::before, .box::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 20em;
+    height: 20em;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+  .box::before {
+    border-top: 10px solid #1E90FF;
+    transform: rotate(120deg);
+  }
+  .box::after {
+    border-top: 10px solid yellow;
+    transform: rotate(240deg);
+  }
+  .box span {
+    font-size: 2em;
+    color: white;
+    --direction: -1;
+    animation: round 2s ease-in-out infinite;
+  }
+  @keyframes round{
+    50% {
+        transform: rotate(calc(180deg * var(--direction)));
+    }
+    100% {
+        transform: rotate(calc(360deg * var(--direction)));
+    }
+  }
+
+  /*
+   最近用的超级多的 border-top(border的一边)，可以直接出来一个弧线，今天这个例子是真的没有想到可以这么，
+   之前用的这样的还是用的mix-blend-mode day-28-2里边的那样的例子，但是中间的颜色不好判断，有点波浪的以为，但是又不一样
+   还有动画效果，还是很神奇，利用两个不同的运动曲线来完成中间的这个晃动，还是很赞的
+   get下border新技能
+   */
+</style>
+</head>
+<body>
+  <div class="box">
+    <span>loading</span>
+  </div>
+</body>
+</html>
