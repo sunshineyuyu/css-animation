@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day-66 咖啡机</title>
+<style>
+	html, body {
+		padding: 0;
+		margin: 0;
+		display: flex;
+		height: 100%;
+		background:#40E0D0;
+		justify-content: center;
+		align-items: center;
+	}
+	.box {
+		width: 400px;
+		height: 400px;
+		background: #fff;
+		border-radius: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.coffeemaker {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 160px;
+	}
+	.header, .footer{
+		width: 100%;
+		height: 46px;
+		background: #F4A460;
+		border-right: 15px solid #8B4513;
+		box-sizing: border-box;
+		position: relative;
+	}
+	.header {
+		border-radius: 20px 20px 0 0;
+	}
+	.header::before, .footer::before {
+		position: absolute;
+		left: 10px;
+		content: '';
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		border: 3px solid;
+		border-color: #fff transparent transparent;
+	}
+	.header::before {
+		top: 10px;
+		transform: rotate(-45deg);
+	}
+	.footer {
+		border-radius: 0 0 20px 20px;
+	}
+	.footer::before {
+		bottom: 10px;
+		transform:rotate(-135deg);
+	}
+	.footer::after {
+		content: '';
+		position: absolute;
+		top: 15px;
+		right: 10px;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: #DC143C;
+
+	}
+	.body {
+		width: 100%;
+		height: 160px;
+		background: darkslategray;
+		position: relative;
+		box-sizing: border-box;
+		border-right: 15px solid #000000;
+		overflow: hidden;
+	}
+	.body::before {
+		content: '';
+		width: 80px;
+		height: 20px;
+		border-radius: 10px;
+		position: absolute;
+		top: 0;
+		left: calc((100% + 10px - 80px)/2);
+		background: #fff;
+		box-sizing: border-box;
+		border-right: 10px solid #DCDCDC;
+		z-index: 10;
+	}
+	.body::after {
+		content: '';
+		width: 16px;
+		height: 150px;
+		position: absolute;
+		top: 0;
+		left: calc((100% + 10px - 16px) / 2);
+		background: chocolate;
+		animation: flow 2s linear infinite;
+	}
+	.cup {
+		position: absolute;
+		bottom: 0;
+		width: 80px;
+		height: 45px;
+		left: calc((100% + 10px - 80px)/2);
+		border-bottom-left-radius: 30px;
+		border-bottom-right-radius: 30px;
+		background: #fff;
+		border-right: 10px solid #dcdcdc;
+		box-sizing: border-box;
+		z-index:10;
+	}
+	.cup::after {
+		content:'';
+		position: absolute;
+		top: 5px;
+		right: -33px;
+		width: 18px;
+		height: 18px;
+		border-radius: 50%;
+		border: 4px solid #DCDCDC;
+		z-index: 10;
+	}
+	@keyframes flow{
+		0% {
+			transform: translateY(-150px);
+		}
+		60%, 100% {
+			transform: translateY(140px)
+		}
+
+	}
+
+</style>
+</head>
+<body>
+  <div class="box">
+		<div class="coffeemaker">
+			<div class="header"></div>
+			<div class="body">
+				<div class="cup"></div>
+			</div>
+			<div class="footer"></div>
+		</div>
+	</div>
+</body>
+</html>
