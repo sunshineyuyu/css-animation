@@ -27,6 +27,9 @@
   HTMLCanvasElement.toBlob() 方法创造Blob对象，用以展示canvas上的图片(个人理解：把canvas上的图给导出来)
 
   插曲是： 图片本身是jpg格式，压缩后同样的像素，竟然大了好几倍，最后发现是，toBlob默认的格式是png，显然png格式要大的多
+  
+  window.URL.createObjectURL(blod)方法返回一个指定blod后者file的 data URI
+  HTMLCanvasElement.toDataURL()方法返回一个包含图片展示的 data URI
  */
 var file = document.getElementById('file');
 var reader = new FileReader;
