@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>前段图片压缩</title>
+</head>
+<body>
+  <div>
+    <input type="file" id ="file">
+    <img src="" alt="img" id ="img">
+    <button onclick="compress()">压缩</button>
+
+    <div>
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+</body>
+<script>
+/* 
+  用canvas来图片压缩
+  设计知识点 FileReader 这个点之前做图片上传的时候，前端显示图片用到，可以读取文件的一些信息
+  FilderReader.readAsDataURL()是开始读取指定的Blob中的内容。一旦完成，result属性中将包含一个data: URL格式的字符串以表示所读取文件的内容。
+
+  用canvas画图，截图的 canvas.drawImage,来获得进行图片的布画
+  HTMLCanvasElement.toBlob() 方法创造Blob对象，用以展示canvas上的图片(个人理解：把canvas上的图给导出来)
+
+  插曲是： 图片本身是jpg格式，压缩后同样的像素，竟然大了好几倍，最后发现是，toBlob默认的格式是png，显然png格式要大的多
+ */
+var file = document.getElementById('file');
+var reader = new FileReader;
+var img = new Image();
+
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
+file.addEventListener('change',function(e) {
+  // console.log(e);
+  file = event.target.files[0];
+  console.log(file);
+  reader.readAsDataURL(file);
+});
+
+reader.onload = function(e) {
+  // console.log(e);
+  img.src = e.target.result;
+}
+
+img.onload = function() {
+  var initImageWidth = this.width;
+  var initImageHeight = this.height;
+  
+  var maxwidth = 800;
+  var maxheight = 1200;
+  
+  if(initImageWidth >  maxwidth|| initImageHeight > maxheight) {
+    var actureW  = maxwidth * initImageHeight / initImageWidth;
+    var actureH = maxheight * initImageWidth / initImageHeight;
+    if(initImageWidth/initImageWidth > 0) {
+      canvas.width = maxwidth;
+      canvas.height = actureW;
+      context.clearRect(0, 0, maxwidth, actureW);
+      context.drawImage(img, 0, 0, maxwidth, actureW);
+    } else {
+      canvas.width = actureH;
+      canvas.height = maxheight;
+      context.clearRect(0, 0, actureH, maxheight);
+      context.drawImage(img, 0, 0, actureH, maxheight);
+    }
+  } else {
+    canvas.width = initImageWidth;
+    canvas.height = initImageHeight
+    context.clearRect(0, 0, initImageWidth, initImageHeight);
+    context.drawImage(img, 0, 0, initImageWidth, initImageHeight);
+  }
+
+  canvas.toBlob(function (blob) {
+    document.getElementById('img').setAttribute('src', window.URL.createObjectURL(blob));
+
+    console.log(blob);
+  }, "image/jpeg",.5);
+}
+
+function compress () {
+ //这里可以写img.onload的内容
+
+}
+</script>
+</html>
