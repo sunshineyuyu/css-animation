@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>day71 开锁头</title>
+<style>
+  html,body{
+    padding: 0;
+    margin: 0;
+    background: lightgoldenrodyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .box {
+    width: 20em;
+    height: 20em;
+    background: #E0FFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .lock{
+    width: 50px;
+    height: 45px;
+    background: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+  }
+  .lock::before, .lock::after{
+    content: '';
+    position: absolute;
+    transform-origin: -4px 0 0;
+    transition: 1s ease-in-out;
+  }
+  .lock::before {
+    top: -20px;
+    width: 25px;
+    height: 20px;
+    border: 4px solid #000;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .lock::after {
+    top: 0px;
+    width: 25px;
+    height: 18px;
+    border-left: 4px solid #000;
+    border-right: 4px solid transparent; 
+  }
+  .keyhole {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    position: relative;
+  }
+  .keyhole::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    width: 8px;
+    height: 12px;
+    background: #fff;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  }
+  .open::before {
+    top: -30px;
+    transform: rotateY(30deg);
+  }
+  .open::after {
+    top: -10px;
+    transform: rotateY(30deg);
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="lock">
+      <div class="keyhole"></div>
+    </div>
+  </div>
+</body>
+<script src="https://s1.wxzxzj.com/jquery-1.10.2.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('.lock').on('click', function() {
+    var has = $(this).hasClass("open");
+    if(has) {
+      $(this).removeClass('open');
+    } else {
+      $(this).addClass('open');
+    }
+  });
+});
+</script>
+</html>
