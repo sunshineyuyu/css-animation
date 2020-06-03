@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>day74 小狐狸</title>
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: #008281;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .box {
+    width: 200px;
+    height: 200px;
+    /* background: #fff; */
+    position: relative;
+  }
+  .header {
+    position: absolute; 
+    /* top: 50px; */
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #d26818;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .ear {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .ear::before, .ear::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #ff841d;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    z-index: 1;
+  }
+  .ear::before{
+    left: calc(-100px - 10%);
+    /* clip-path:polygon(60% 0, 100% 0,  100% 50%,  60% 50%); */
+  }
+  .ear::after{
+    right: calc(-100px - 10%);
+    /* clip-path:polygon(0 0, 40% 0,  40% 50%,  0 50%); */
+  }
+  .face {
+    /* width: 100%;
+    height: 100%; */
+    /* background-image:
+        radial-gradient(circle at 50% 100%, #333 1.2em, transparent 1.2em); */
+  }
+  .face::before, .face::after {
+    content: '';
+    position: absolute;
+    top: 100px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #fff;
+    z-index: -1;
+    font-size: 12px;
+  }
+  .face::before{
+    left: -100px;
+    background-image:
+        radial-gradient(circle at 75% 30%, #333 1em, transparent 1em);
+  }
+  .face::after{
+    right: -100px;
+    background-image:
+        radial-gradient(circle at 25% 30%, #333 1em, transparent 1em);
+  }
+  .nose {
+    position: absolute;
+    bottom: -20px;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  .body {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 75px;
+    left: -50%;
+    background: #d26818;
+    border-radius: 50%;
+    transform: translateX(22%);
+    clip-path: polygon(50% 0, 100% 0,100% 100%, 0 100%, 0 50%, 50% 50%);
+    overflow: hidden;
+  }
+  .body::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: -40px;
+    top: 85px;
+    background: #fff;
+    border-radius: 50%;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="header">
+      <div class="face"></div>
+    </div>
+    <div class="ear"></div>
+    <div class="nose"></div>
+    <div class="body"></div>
+  </div>
+</body>
+
+</html>
