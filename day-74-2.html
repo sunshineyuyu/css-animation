@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>border-radius 小狐狸</title>
+</head>
+<style>
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --bc: teal;
+    background-color: var(--bc);
+  }
+  .fox {
+    width: 7em;
+    height: 9em;
+    font-size: 30px;
+    --c: chocolate;
+    position: relative;
+    color: var(--c);
+  }
+  .fox .head {
+    position: absolute;
+    width: 6em;
+    height: 6em;
+    background-color: currentColor;
+    border-radius: 50%;
+    right: 0;
+}
+.fox .face::before,
+.fox .face::after {
+    content: '';
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    background-color: white;
+    border-radius: 0 100% 0 100%;
+    top: 3em;
+}
+
+.fox .face::after {
+    right: 0;
+    transform: rotate(-90deg);
+}
+
+.fox .eye::before,
+.fox .eye::after {
+  content: '';
+  position: absolute;
+  border: 0.3em solid;
+  border-color: black black transparent transparent;
+  border-radius: 50%;
+  top: 4.5em;
+
+}
+.fox .eye::before {
+  left: 1em
+}
+.fox .eye::after {
+    right: 1em;
+    transform: rotate(-90deg);
+}
+
+.fox .ear::before,
+.fox .ear::after  {
+  content: '';
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  background-color: currentColor;
+  border-radius: 0 100% 0 0;
+  filter: brightness(1.25);
+  z-index: -1;
+}
+.fox .ear::after {
+  right: 0;
+  transform: rotate(-90deg);
+}
+.fox .nose{
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  background-color: black;
+  border-radius: 50%;
+  top: calc(6em - 1em / 2);
+  right: calc((6em - 1em) / 2);
+  transform: scale(0.9);
+}
+
+.fox .tail{
+  width: 7em;
+  height: 7em;
+  background-color: currentColor;
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+}
+.fox .tail::before {
+  content: '';
+  position: absolute;
+  width: calc(7em / 2);
+  height: calc(7em / 2);
+  background-color: var(--bc);
+  border-radius: 100% 0 0 0;
+}
+.fox .tail{
+    overflow: hidden;
+}
+
+.fox .tail::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 0 0 100% 0;
+    background: white;
+    bottom: calc(7em / 2 - 1em);
+}
+/* 一个有意思的是
+  如果html添加bg会给内部元素的层级关系造成困扰，有点尴尬，比如z-index会在body的下层 
+  如果我给html添加bg，同时取消body的bg的时候，我发现这时其实z-index等于-1是可以展示的
+  如果我给body添加bg，同时取消html的bg的时候，我发现这时其实z-index等于-1ye是可以展示的
+  如果同事给html跟body添加background，这时显示的是body的颜色
+  这个z-index：-1层级关系，好像我给屡不清楚了
+  好像不在box的下方，但是吧，如果html跟body二选一的话，好像是在box下方
+*/
+  
+</style>
+
+<body>
+  <!-- 熟练运用border-radius 好屌啊，词贫乏 -->
+  <div class="fox">
+    <div class="head">
+      <div class="face"></div>
+      <div class="eye"></div>
+      <div class="ear"></div>
+      <div class="nose"></div>
+    </div>
+    <div class="tail"></div>
+  </div>
+</body>
+
+</html>
