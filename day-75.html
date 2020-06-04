@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MacBook</title>
+</head>
+<style>
+  html,body{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, white, gray);
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+  }
+  .screen {
+    position: relative;
+    width: 18em;
+    height: calc(18em * 0.667);
+    border-width: 0.8em 0.5em;
+    border-style: solid;
+    border-color: black;
+    border-radius: .8em .8em 0 0;
+    background: black;
+  }
+  .screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: radial-gradient(
+        circle at right bottom,
+        rgba(255, 255, 255, 0.4) 75%,
+        rgba(255, 255, 255, 0.6) 75%
+    );
+  }
+  .box .main {
+    width: 22em;
+    height: 0.7em;
+    position: relative;
+    background-image: linear-gradient(
+        white,
+        white 55%,
+        #999 60%,
+        #222 90%,
+        rgba(0, 0, 0, 0.1) 100%);
+    border-radius: 0 0 10% 10% / 0 0 50% 50%;
+    /* 
+      等同于这个
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 10% 50%;
+      border-bottom-left-radius: 10% 50%;
+    */
+  }
+  .box .main::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: 55%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(255, 255, 255, 0.8) 1%,
+        rgba(0, 0, 0, 0.4) 4%,
+        transparent 15%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent calc(100% - 15%),
+        rgba(0, 0, 0, 0.4), calc(100% - 4%),
+        rgba(255, 255, 255, 0.8) calc(100% - 1%),
+        rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+  .main::after {
+    content: '';
+    position: absolute;
+    width: 3em;
+    height: .35em;
+    background-color: #ddd;
+    left: calc(50% - 2em / 2);
+    box-shadow: 
+        inset -0.5em -0.1em 0.3em rgba(0, 0, 0, 0.2),
+        inset 0.5em 0.1em 0.3em rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 7% 7% / 0 0 95% 95%;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <div class="screen"></div>
+    <div class="main"></div>
+  </div>
+</body>
+
+</html>
