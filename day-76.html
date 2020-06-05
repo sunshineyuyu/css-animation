@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>蜡烛</title>
+</head>
+<style>
+  html,
+  body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+  }
+  .candle {
+    font-size: 10px;
+    width: 10em;
+    height: 20em;
+    background-image: linear-gradient( orange, darkorange, sienna, saddlebrown 50%, rgba(0, 0, 0, 0.6));
+    box-shadow: 
+        inset 1.5em -2.1em 3em rgba(0, 0, 0, 0.4),
+        inset -1.5em 0 3em rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+  .candle::before {
+    content: '';
+    position: absolute;
+    top: -2.5em;
+    width: 10em;
+    height: 5em;
+    background-color: red;
+    border-radius: 100%;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.6) 5%, orange 20%, darkorange 30%, sienna 50%, saddlebrown 60%);
+    border: 2px solid rgba(255, 140, 0, 0.63);
+    box-sizing: border-box;
+  }
+  .lamp {
+    position: absolute;
+    width: 0.6em;
+    height: 3.5em;
+    left: 50%;
+    top: -3.5em;
+    transform: translateX(-50%);
+    border-radius: 100% 100% 0 0 / 200% 200% 0 0;
+    background:linear-gradient(black 40%,darkorange, orange, rgba(0, 0, 0, 0.6));
+    z-index: 10;
+  }
+  .light{
+    position: absolute;
+    top: -9.5em;
+    left: 50%;
+    width: 2em;
+    height: 9em;
+    transform: translateX(-50%);
+    /* border-radius: 2em 2em 2em 2em / 8em 8em 4em 4em;
+    box-shadow: 0 0 2em 2em lightcoral; */
+  }
+  .light::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 6.5em;
+    width: 2em;
+    height: 3em;
+    transform: translateX(-50%);
+    /* background: #03A9F4; */
+    border-radius:  0 0 2em 2em  / 0 0 4em 4em;
+    background-image: linear-gradient(#fff, #03A9F4 50%);
+    opacity: 0.6;
+    z-index: 6;
+  }
+  .light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2em;
+    height: 9em;
+    transform: translateX(-50%);
+    border-radius: 2em 2em 2em 2em / 8em 8em 4em 4em;
+    background: #fff;
+    box-shadow: 0px -2px 3px 1.4px orange;
+    z-index: 5;
+  }
+  .light .shadow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2em;
+    height: 3em;
+    transform: translateX(-50%);
+    background-color: #ffa500a1;
+    border-radius: 2em 2em 2em 2em / 8em 8em 4em 4em;
+    box-shadow: 0 1em 5em 5em rgba(241, 77, 77, 0.5490196078431373);
+    /* animation: blink 100ms infinite; */
+  }
+  @keyframes blink {
+    100% {
+      filter: blur(5em) opacity(.8);
+    }
+  }
+</style>
+
+<body>
+  <div class="candle">
+    <div class="lamp"></div>
+    <div class="light">
+      <div class="shadow"></div>
+    </div>
+  </div>
+</body>
+
+</html>
